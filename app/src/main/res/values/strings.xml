@@ -6,4 +6,30 @@
     <string name="to">To</string>
     <string name="mydcsapp">MyDCSApp</string>
     <string name="todo">TODO</string>
+    <string name="Login">Log In</string>
+    <string name="phn">Phone Number</string>
+    <string name="Password">password</string>
+    <string name="Phone">0xx xxxx xxx</string>
+    <string name="Add_Data">Add Data</string>
+    <string name="Share_Data">Share Data</string>
+    <string name="Bill">Bill</string>
+    <string name="Registration">Registration</string>
+    <string name="Full">Full Name</string>
+    <string name="Email">Email Address</string>
+    <string name="Re_Enter">Re-enter password</string>
+    <string name="Edit">Edit</string>
+    <string name="Delete">Delete</string>
+    <string name="Bill_Period">Bill Period</string>
+    <string name="Date">20th Aug 2020- 19th Sep 2020</string>
+    <string name="Current">Current Usage</string>
+    <string name="Additional">Additional Data</string>
+    <string name="Total">Total Amount</string>
+    <string name="Last_month">Last Month Aries</string>
+    <string name="Pay">Pay</string>
+    <string name="MEdit">Edit My Profile</string>
+    <string name="My_profile">Profile</string>
+    <string name="Manudi">Manudi Sathmini</string>
+    <string name="phone">0812404790</string>
+    <string name="MEmail">manudisathmini@gmail</string>
+
 </resources>

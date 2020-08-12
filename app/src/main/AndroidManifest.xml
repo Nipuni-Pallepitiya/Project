@@ -9,6 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MBill"
+            android:parentActivityName=".MSelect"></activity>
+        <activity android:name=".CCredit_card" />
+        <activity android:name=".MProfile"
+            android:parentActivityName=".MSelect"/>
+        <activity android:name=".MEditProfile"
+            android:parentActivityName=".MProfile"/>
+        <activity android:name=".NShare_Data" />
+        <activity android:name=".PAdd_Data" />
+
+        <activity android:name=".MSelect"
+            android:parentActivityName=".MLogin"/>
+        <activity android:name=".MRegister"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".MLogin"
+            android:parentActivityName=".MRegister"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
