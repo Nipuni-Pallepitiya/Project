@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NReportDisplay"></activity>
+        <activity android:name=".Pview_my_packages"></activity>
+        <activity android:name=".Pdata_package_details" />
+        <activity android:name=".Pdata_packages" />
+        <activity android:name=".Pfixed_package_details" />
+        <activity android:name=".Pfixed_packages" />
+        <activity android:name=".NReportDisplay" />
         <activity android:name=".NReport" />
         <activity android:name=".NShareDisplay" />
         <activity android:name=".NShare_Main" />
