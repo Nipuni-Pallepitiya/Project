@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pview_my_packages"></activity>
+        <activity android:name=".Cupdatecreditdcarddetails"></activity>
+        <activity android:name=".Cupdatecreditcarddetails" />
+        <activity android:name=".Ccreditsuccessful" />
+        <activity android:name=".Ccreditcarddetails" />
+        <activity android:name=".Ccreditcard3" />
+        <activity android:name=".Ccreditcard2" />
+        <activity android:name=".Ccashsuccessful" />
+        <activity android:name=".CcashDetails" />
+        <activity android:name=".Pview_my_packages" />
         <activity android:name=".Pdata_package_details" />
         <activity android:name=".Pdata_packages" />
         <activity android:name=".Pfixed_package_details" />

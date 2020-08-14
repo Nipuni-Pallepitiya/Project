@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">FinalOne</string>
     <string name="welcome">Welcome</string>
     <string name="login">Login</string>
@@ -20,7 +20,7 @@
     <string name="Edit">Edit</string>
     <string name="Delete">Delete</string>
     <string name="Bill_Period">Bill Period</string>
-    <string name="Date">20th Aug 2020- 19th Sep 2020</string>
+    <string name="Date" tools:ignore="TypographyDashes">20th Aug 2020 - 19th Sep 2020</string>
     <string name="Current">Current Usage</string>
     <string name="Additional">Additional Data</string>
     <string name="Total">Total Amount</string>
@@ -108,5 +108,39 @@
     <string name="p_pack3">3.Package 3</string>
     <string name="p_pack4">4.Package 4</string>
     <string name="p_todo">TODO</string>
+
+    <string name="c.payment">Payment</string>
+    <string name="c.Credit_card">Credit card</string>
+    <string name="c.cash">Cash</string>
+    <string name="c.tot_amount">Total Amount payable</string>
+    <string name="c.PhoneNo">0xx xxxx xxx</string>
+    <string name="c.Date">29th Aug 2020</string>
+    <string name="c.amount">Rs. xxx/=</string>
+    <string name="c.payBefore">(Pay before 10th Sep 2020)</string>
+    <string name="c.cargills">Through Cargill\'s Foodcity</string>
+    <string name="c.branch_name">Branch name</string>
+    <string name="c.branchNo">Branch number</string>
+    <string name="c.cashDate">Date</string>
+    <string name="c.cashTime">Time</string>
+    <string name="c.cashbillno">Bill number</string>
+    <string name="c.creditname">Holder\'s name</string>
+    <string name="c.creditno">Card number</string>
+    <string name="c.creditexpire">Expiry date</string>
+    <string name="c.creditCVC">CVC</string>
+    <string name="c.creditcheckbox">save my card details securely for faster payments.</string>
+    <string name="c.creditterms">Terms and conditions apply</string>
+    <string name="c.ok">OK</string>
+    <string name="c.billnum">B001</string>
+    <string name="c.cashsuccessful">Payment through cash is successful</string>
+    <string name="c.Gotomenu">Go to menu</string>
+    <string name="c.creditsuccessful">Payment through credit card is successful</string>
+    <string name="c.viewcreditDetails">view my credit card details</string>
+    <string name="c.creditcardnumber" tools:ignore="Typos">xxxx xxxx xxxx xxxx</string>
+    <string name="c.holdersname">Nuwan Ariyathilake</string>
+    <string name="c.edate">22/05/2040</string>
+    <string name="c.cvc">0000 1111 2222 3333</string>
+    <string name="c.creditcarddetails">Credit card details</string>
+    <string name="c.updatebutton">Update</string>
+    <string name="c.deletebutton">Delete</string>
 
 </resources>
