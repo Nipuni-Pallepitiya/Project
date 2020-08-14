@@ -32,4 +32,33 @@
     <string name="phone">0812404790</string>
     <string name="MEmail">manudisathmini@gmail</string>
 
+    <string name="ShareData">ShareData</string>
+    <string name="Report">Report</string>
+    <string name="NShareForm">Form</string>
+    <string name="NShareID">Share data ID</string>
+    <string name="NResultShareDataID">Auto generated</string>
+    <string name="NPhnFrm">Phone No From</string>
+    <string name="NPhn_To">Phone No To</string>
+    <string name="NAmount_Data">Amount of Data</string>
+    <string name="NDate">Date</string>
+    <string name="NPhnFromResult">Auto genetated</string>
+    <string name="NPhnToResult">Enter phone number</string>
+    <string name="NamtofdataResult">Amount of Data(In MB)</string>
+    <string name="NamtResult">Enter amount of data</string>
+    <string name="NDateResult">Auto generated</string>
+    <string name="NFormSubmit">Submit</string>
+    <string name="NDetails">Details of shared data</string>
+    <string name="NAmountleft">Amount left</string>
+    <string name="N_edit">Edit</string>
+    <string name="NReport">Report</string>
+    <string name="NReportSubmit">submit</string>
+    <string name="NEnter">Enter any phone number to get details</string>
+    <string name="NReportDetails">Details are as follows....</string>
+    <string name="NDate2">Date</string>
+    <string name="NReportAmt">Amount of data transferred</string>
+    <string name="NLast10">Note:Only last 10 transactions will be visible</string>
+    <string name="NDialog">OK</string>
+    <string name="NBack">Back</string>
+    <string name="NToast">.......!!!!  Processing Request  !!!!!</string>
+
 </resources>

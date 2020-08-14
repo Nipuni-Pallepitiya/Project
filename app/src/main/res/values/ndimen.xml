@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name= "ndefault_txtview_width" >170dp</dimen>
+    <dimen name= "ndefault_txtview_height" >42dp</dimen>
+    <dimen name= "nsubmit_txt_width" >150dp</dimen>
+    <dimen name= "nsubmit_txt_height" >42dp</dimen>
+    <dimen name= "ndefault_txt_width" >135dp</dimen>
+    <dimen name= "ndefault_txt_height" >42dp</dimen>
+    <dimen name= "ndefault_backbtn_width" >97dp</dimen>
+    <dimen name= "ndefault_bcakbtn_height" >37dp</dimen>
+
+</resources>
