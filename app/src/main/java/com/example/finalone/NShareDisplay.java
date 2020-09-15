@@ -17,7 +17,7 @@ public class NShareDisplay extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(NShare_Main.EXTRA_MESSAGE);
+        //String message = intent.getStringExtra(NShare_Main.EXTRA_MESSAGE);
         String message2 = intent.getStringExtra(NShare_Main.EXTRA_MESSAGE2);
         String message3 = intent.getStringExtra(NShare_Main.EXTRA_MESSAGE3);
         String message4 = intent.getStringExtra(NShare_Main.EXTRA_MESSAGE4);
@@ -25,8 +25,8 @@ public class NShareDisplay extends AppCompatActivity {
 
 
         // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.nshareData);
-        textView.setText(message);
+        /*TextView textView = findViewById(R.id.nshareData);
+        textView.setText(message);*/
         TextView textView2 = findViewById(R.id.nphnFrom);
         textView2.setText(message2);
         TextView textView3 = findViewById(R.id.nphnTo);

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class NShare_Main extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE = "com.example.finalone.MESSAGE";
+   // public static final String EXTRA_MESSAGE = "com.example.finalone.MESSAGE";
     public static final String EXTRA_MESSAGE2 = "com.example.finalone.MESSAGE2";
     public static final String EXTRA_MESSAGE3 = "com.example.finalone.MESSAGE3";
     public static final String EXTRA_MESSAGE4 = "com.example.finalone.MESSAGE4";
@@ -46,16 +46,16 @@ public class NShare_Main extends AppCompatActivity {
 
 
         btn = findViewById(R.id.nbutton3);
-        dataid = findViewById(R.id.NshareData);
+        //dataid = findViewById(R.id.NshareData);
         phnfrom = findViewById(R.id.nPhnFrom);
         phnTo = findViewById(R.id.NPhnTo);
         amt = findViewById(R.id.NAmtData);
         date = findViewById(R.id.NDate);
 
 
-        EditText editText = (EditText) findViewById(R.id.NshareData);
+        /*EditText editText = (EditText) findViewById(R.id.NshareData);
         String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
+        intent.putExtra(EXTRA_MESSAGE, message);*/
 
 
         EditText editText2 = (EditText) findViewById(R.id.nPhnFrom);
