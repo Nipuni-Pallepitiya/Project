@@ -43,7 +43,7 @@
         app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintVertical_bias="0.743" />
 
     <Button
         android:id="@+id/nbutton3"
@@ -62,36 +62,6 @@
         app:layout_constraintVertical_bias="0.902" />
 
 
-    <EditText
-        android:id="@+id/NshareData"
-        android:layout_width="@dimen/ndefault_txt_width"
-        android:layout_height="@dimen/ndefault_txt_height"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/background_light"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.858"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
-
-    <TextView
-        android:id="@+id/NtextView28"
-        android:layout_width="@dimen/ndefault_txtview_width"
-        android:layout_height="@dimen/ndefault_txtview_height"
-        android:layout_marginTop="136dp"
-        android:text="@string/NShareID"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
-
     <TextView
         android:id="@+id/NtextView29"
         android:layout_width="@dimen/ndefault_txtview_width"
@@ -102,10 +72,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <TextView
         android:id="@+id/NtextView30"
@@ -227,10 +197,10 @@
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintHorizontal_bias="0.844"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
+        app:layout_constraintVertical_bias="0.39" />
 
     <EditText
         android:id="@+id/NDate"

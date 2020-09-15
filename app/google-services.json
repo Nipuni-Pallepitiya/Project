@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "771029602057",
+    "firebase_url": "https://finaloneik.firebaseio.com",
+    "project_id": "finaloneik",
+    "storage_bucket": "finaloneik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771029602057:android:3f237cee7539e46bb5cdd8",
+        "android_client_info": {
+          "package_name": "com.example.finalone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771029602057-32v2obek922er7r3lkgsflpmp6ol0t8b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHuSiCFSz5L4OECHV2bsmTRPfdR4m_oGM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771029602057-32v2obek922er7r3lkgsflpmp6ol0t8b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
