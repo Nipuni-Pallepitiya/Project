@@ -142,5 +142,6 @@
     <string name="c.creditcarddetails">Credit card details</string>
     <string name="c.updatebutton">Update</string>
     <string name="c.deletebutton">Delete</string>
+    <string name="NLast3">Note:Only last 3 transactions will be visible</string>
 
 </resources>
