@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "771029602057",
-    "firebase_url": "https://finaloneik.firebaseio.com",
-    "project_id": "finaloneik",
-    "storage_bucket": "finaloneik.appspot.com"
+    "project_number": "822813982794",
+    "firebase_url": "https://finalone-8d8ba.firebaseio.com",
+    "project_id": "finalone-8d8ba",
+    "storage_bucket": "finalone-8d8ba.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:771029602057:android:3f237cee7539e46bb5cdd8",
+        "mobilesdk_app_id": "1:822813982794:android:5921503e85d836d65ea6b3",
         "android_client_info": {
           "package_name": "com.example.finalone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "771029602057-32v2obek922er7r3lkgsflpmp6ol0t8b.apps.googleusercontent.com",
+          "client_id": "822813982794-dvt835ol54kf6a9sner0m3v43m798had.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.finalone",
+            "certificate_hash": "371900a6acddbd70081dc5d524b90edfbda71d86"
+          }
+        },
+        {
+          "client_id": "822813982794-op6nvvrdiv7bce0dto5480flu662kl8r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDHuSiCFSz5L4OECHV2bsmTRPfdR4m_oGM"
+          "current_key": "AIzaSyDcpb_tULRIAAIc8rAuZrjIXBrrv0TCvEs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "771029602057-32v2obek922er7r3lkgsflpmp6ol0t8b.apps.googleusercontent.com",
+              "client_id": "822813982794-op6nvvrdiv7bce0dto5480flu662kl8r.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

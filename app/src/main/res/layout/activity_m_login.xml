@@ -33,7 +33,6 @@
         android:layout_width="171dp"
         android:layout_height="72dp"
         android:background="#1C96C6"
-        android:onClick="displayToast"
         android:text="@string/login"
         android:textColor="#F6F2F2"
         android:textSize="24sp"
