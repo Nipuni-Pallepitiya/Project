@@ -17,11 +17,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static com.example.finalone.MLogin.phone;
+//import static com.example.finalone.MLogin.phone;
 
 
 public class MSelect extends AppCompatActivity {
+    public static final String EXTRAMESSAGE="message";
     private ImageButton imageButton;
+    TextView textview;
+
 
 
     @Override
@@ -32,7 +35,7 @@ public class MSelect extends AppCompatActivity {
             final Intent intent = getIntent();
 
             final String phone = intent.getStringExtra("EXTRA_MESSAGE");
-            TextView textview = findViewById(R.id.textView6);
+            textview = findViewById(R.id.textView6);
             textview.setText(phone);
 
 
@@ -87,7 +90,10 @@ public class MSelect extends AppCompatActivity {
     public void share_Data(View view){
         Intent intent = new Intent(this,NShare_Data.class);
         Button btn = (Button) findViewById(R.id.button10);
+        String phone = textview.getText().toString();
+        intent.putExtra("EXTRA_MESSAGE",phone);
         startActivity(intent);
+
     }
     //redirect to the bill using intent
     public void bill(View view){

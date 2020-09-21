@@ -49,7 +49,6 @@
         android:id="@+id/ntextView"
         android:layout_width="144dp"
         android:layout_height="37dp"
-        android:text="@string/Phone"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
