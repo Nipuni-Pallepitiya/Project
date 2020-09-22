@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <View
-        android:id="@+id/pview11"
+        android:id="@+id/ptvPhoneMyPack"
         android:layout_width="426dp"
         android:layout_height="66dp"
         android:background="#072D42"
@@ -42,20 +42,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
-
-    <TextView
-        android:id="@+id/ptextView48"
-        android:layout_width="144dp"
-        android:layout_height="37dp"
-        android:text="@string/Phone"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
         android:id="@+id/pimageView12"
@@ -85,10 +71,9 @@
         app:layout_constraintVertical_bias="0.28" />
 
     <TextView
-        android:id="@+id/ptextView50"
+        android:id="@+id/ptvPack1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/p_pack1"
         android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -99,23 +84,9 @@
         app:layout_constraintVertical_bias="0.405" />
 
     <TextView
-        android:id="@+id/ptextView51"
+        android:id="@+id/ptvPack2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/p_pack2"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
-
-    <TextView
-        android:id="@+id/ptextView52"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/p_pack3"
         android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,21 +94,20 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintVertical_bias="0.526" />
 
     <TextView
-        android:id="@+id/ptextView53"
+        android:id="@+id/ptvPack3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/p_pack4"
         android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintVertical_bias="0.66" />
 
     <ImageButton
         android:id="@+id/pimageButton6"
@@ -151,5 +121,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014" />
+
+    <TextView
+        android:id="@+id/ptvPack4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.766" />
+
+    <TextView
+        android:id="@+id/ptvPack5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.865" />
+
+    <TextView
+        android:id="@+id/ptvPhoneViewMyPacks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

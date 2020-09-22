@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "8240644402",
+    "firebase_url": "https://finalone-c3e49.firebaseio.com",
+    "project_id": "finalone-c3e49",
+    "storage_bucket": "finalone-c3e49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8240644402:android:ef95940b0f02def403d72b",
+        "android_client_info": {
+          "package_name": "com.example.finalone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "8240644402-q0uf6up990lrgn13jjdta39adhikvngm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.finalone",
+            "certificate_hash": "3e0b963ac71b9fd355c69bfb9ad72bfa3d0786c2"
+          }
+        },
+        {
+          "client_id": "8240644402-81knmk5pkt5se0j2a37mqhh3ghotsq9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWlgpr5M6WAhGpwcrqXoqn9n-wbO8CHcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8240644402-81knmk5pkt5se0j2a37mqhh3ghotsq9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

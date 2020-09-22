@@ -84,6 +84,8 @@ public class MSelect extends AppCompatActivity {
     public void Add_Data(View view){
         Intent intent = new Intent(this,PAdd_Data.class);
         Button btn = (Button) findViewById(R.id.button9);
+        String phone = textview.getText().toString();
+        intent.putExtra("phone",phone);
         startActivity(intent);
 
     }

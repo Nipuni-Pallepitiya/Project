@@ -57,20 +57,6 @@
         app:srcCompat="@drawable/icon_3" />
 
     <TextView
-        android:id="@+id/ptextView26"
-        android:layout_width="144dp"
-        android:layout_height="37dp"
-        android:text="@string/Phone"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <TextView
         android:id="@+id/ptextView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -162,7 +148,7 @@
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
     <Button
-        android:id="@+id/pbutton9"
+        android:id="@+id/pbtnViewDataPack1"
         android:layout_width="156dp"
         android:layout_height="59dp"
         android:backgroundTint="#1C96C6"
@@ -176,7 +162,7 @@
         app:layout_constraintVertical_bias="0.348" />
 
     <Button
-        android:id="@+id/pbutton10"
+        android:id="@+id/pbtnViewDataPack2"
         android:layout_width="156dp"
         android:layout_height="59dp"
         android:backgroundTint="#1C96C6"
@@ -190,7 +176,7 @@
         app:layout_constraintVertical_bias="0.517" />
 
     <Button
-        android:id="@+id/pbutton11"
+        android:id="@+id/pbtnViewDataPack3"
         android:layout_width="156dp"
         android:layout_height="59dp"
         android:backgroundTint="#1C96C6"
@@ -201,20 +187,33 @@
         app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.674" />
+        app:layout_constraintVertical_bias="0.678" />
 
     <Button
-        android:id="@+id/pbutton12"
-        android:layout_width="159dp"
-        android:layout_height="56dp"
+        android:id="@+id/pbtnViewDataPack4"
+        android:layout_width="156dp"
+        android:layout_height="59dp"
         android:backgroundTint="#1C96C6"
         android:text="@string/p_viewpack"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.837" />
+        app:layout_constraintVertical_bias="0.84" />
+
+    <TextView
+        android:id="@+id/ptvPhoneDataPack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

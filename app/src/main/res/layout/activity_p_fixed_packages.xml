@@ -121,6 +121,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/ptvPhoneFixPack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.93" />
+
     <ImageButton
         android:id="@+id/pimageButton2"
         android:layout_width="wrap_content"
@@ -133,20 +146,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014"
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
-
-    <TextView
-        android:id="@+id/ptextView2"
-        android:layout_width="144dp"
-        android:layout_height="37dp"
-        android:text="@string/Phone"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034" />
 
     <ImageView
         android:id="@+id/pimageView3"
@@ -162,59 +161,59 @@
         app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 
     <Button
-        android:id="@+id/pbutton7"
-        android:layout_width="wrap_content"
+        android:id="@+id/pbtnViewFixPack1"
+        android:layout_width="116dp"
         android:layout_height="wrap_content"
         android:background="#1C96C6"
         android:text="@string/p_viewpack"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.887"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.868" />
+        app:layout_constraintVertical_bias="0.329" />
 
     <Button
-        android:id="@+id/pbutton6"
-        android:layout_width="wrap_content"
+        android:id="@+id/pbtnViewFixPack2"
+        android:layout_width="116dp"
         android:layout_height="wrap_content"
         android:background="#1C96C6"
         android:text="@string/p_viewpack"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.693" />
+        app:layout_constraintVertical_bias="0.506" />
 
     <Button
-        android:id="@+id/pbutton5"
-        android:layout_width="wrap_content"
+        android:id="@+id/pbtnViewFixPack3"
+        android:layout_width="116dp"
         android:layout_height="wrap_content"
         android:background="#1C96C6"
         android:text="@string/p_viewpack"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.508" />
+        app:layout_constraintVertical_bias="0.691" />
 
     <Button
-        android:id="@+id/pbutton4"
-        android:layout_width="wrap_content"
+        android:id="@+id/pbtnViewFixPack4"
+        android:layout_width="116dp"
         android:layout_height="wrap_content"
         android:background="#1C96C6"
         android:text="@string/p_viewpack"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.865" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

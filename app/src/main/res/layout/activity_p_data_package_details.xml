@@ -44,20 +44,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/ptextView32"
-        android:layout_width="144dp"
-        android:layout_height="37dp"
-        android:text="@string/Phone"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
     <ImageView
         android:id="@+id/pimageView9"
         android:layout_width="76dp"
@@ -77,7 +63,7 @@
         android:layout_height="wrap_content"
         android:text="@string/p_packid"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
@@ -91,7 +77,7 @@
         android:layout_height="wrap_content"
         android:text="@string/p_packname"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
@@ -105,7 +91,7 @@
         android:layout_height="wrap_content"
         android:text="@string/p_packanytimedata"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.088"
@@ -119,7 +105,7 @@
         android:layout_height="wrap_content"
         android:text="@string/p_packnightdata"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
@@ -128,33 +114,19 @@
         app:layout_constraintVertical_bias="0.628" />
 
     <TextView
-        android:id="@+id/ptextView38"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/p_dpdatefrom"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.711" />
-
-    <TextView
         android:id="@+id/ptextView39"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="220dp"
-        android:text="@string/p_dpdateto"
+        android:text="@string/p_dpvalidity"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.684" />
+        app:layout_constraintVertical_bias="0.582" />
 
     <TextView
         android:id="@+id/ptextView33"
@@ -171,11 +143,10 @@
         app:layout_constraintVertical_bias="0.232" />
 
     <TextView
-        android:id="@+id/ptextView42"
+        android:id="@+id/ptvDataName"
         android:layout_width="130dp"
         android:layout_height="58dp"
         android:background="@android:color/background_light"
-        android:text="@string/p_dpvalname"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="24sp"
@@ -187,11 +158,10 @@
         app:layout_constraintVertical_bias="0.41" />
 
     <TextView
-        android:id="@+id/ptextView43"
+        android:id="@+id/ptvDataAny"
         android:layout_width="130dp"
         android:layout_height="43dp"
         android:background="#FFFFFF"
-        android:text="@string/p_dpvalanytimedata"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="24sp"
@@ -203,11 +173,10 @@
         app:layout_constraintVertical_bias="0.521" />
 
     <TextView
-        android:id="@+id/ptextView41"
+        android:id="@+id/ptvDataId"
         android:layout_width="130dp"
         android:layout_height="43dp"
         android:background="@android:color/background_light"
-        android:text="@string/p_dpvalid"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="24sp"
@@ -219,11 +188,10 @@
         app:layout_constraintVertical_bias="0.312" />
 
     <TextView
-        android:id="@+id/ptextView45"
+        android:id="@+id/ptvDataValidity"
         android:layout_width="130dp"
         android:layout_height="43dp"
         android:background="@android:color/background_light"
-        android:text="@string/p_dpvaldatefrom"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="24sp"
@@ -232,30 +200,13 @@
         app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.706" />
+        app:layout_constraintVertical_bias="0.729" />
 
     <TextView
-        android:id="@+id/ptextView46"
+        android:id="@+id/ptvDataNight"
         android:layout_width="130dp"
         android:layout_height="43dp"
         android:background="@android:color/background_light"
-        android:text="@string/p_dpvaldateto"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.796" />
-
-    <TextView
-        android:id="@+id/ptextView44"
-        android:layout_width="130dp"
-        android:layout_height="43dp"
-        android:background="@android:color/background_light"
-        android:text="@string/p_dpvalnightdata"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="24sp"
@@ -272,43 +223,28 @@
         android:layout_height="wrap_content"
         android:text="@string/p_packprice"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
+        app:layout_constraintVertical_bias="0.811" />
 
     <TextView
-        android:id="@+id/ptextView47"
+        android:id="@+id/ptvDataprice"
         android:layout_width="130dp"
         android:layout_height="43dp"
         android:background="#FFFFFF"
-        android:text="@string/p_dpvalprice"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.886" />
-
-    <Button
-        android:id="@+id/pbutton13"
-        android:layout_width="122dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#1C96C6"
-        android:text="@string/p_activate"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.829" />
 
     <ImageButton
         android:id="@+id/pimageButton5"
@@ -322,6 +258,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014" />
+
+    <Button
+        android:id="@+id/pbtnActivateDataPack"
+        android:layout_width="105dp"
+        android:layout_height="44dp"
+        android:background="#1C96C6"
+        android:text="@string/p_activate"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <TextView
+        android:id="@+id/ptvPhoneDataDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.93" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
