@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +25,7 @@ public class MSelect extends AppCompatActivity {
     public static final String EXTRAMESSAGE="message";
     private ImageButton imageButton;
     TextView textview;
+    Button btnBill;
 
 
 
@@ -32,6 +34,8 @@ public class MSelect extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_m_select);
 
+            textview = findViewById(R.id.textView6);
+
             final Intent intent = getIntent();
 
             final String phone = intent.getStringExtra("EXTRA_MESSAGE");
@@ -39,6 +43,9 @@ public class MSelect extends AppCompatActivity {
             textview.setText(phone);
 
 
+        /*Intent intent1 = new Intent(MSelect.this,MBill.class);
+        final String phone1 = intent1.getStringExtra("phone");
+        textview.setText(phone1);*/
 
 
 
@@ -74,8 +81,45 @@ public class MSelect extends AppCompatActivity {
                 }
             });
 
+            btnBill = findViewById(R.id.button11);
+        btnBill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Bill").child(phone);
+                dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.hasChildren()){
+
+                            String billDateFrom = (snapshot.child("billdatefrom").getValue().toString());
+                            String  billDateTo = (snapshot.child("billdateto").getValue().toString());
+                            String billPrice = (snapshot.child("billfixprice").getValue().toString());
+                            String phone1 = textview.getText().toString();
+
+                            Intent intent3 = new Intent(getBaseContext(),MBill.class);
+
+                            intent3.putExtra("dateFrom",billDateFrom);
+                            intent3.putExtra("dateTo",billDateTo);
+                            intent3.putExtra("price",billPrice);
+                            intent3.putExtra("PHONE",phone1);
+                            startActivity(intent3);
 
 
+
+
+                        }
+                        else{
+                            Toast.makeText(MSelect.this, "You have to activate package", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
 
 
 
@@ -99,9 +143,18 @@ public class MSelect extends AppCompatActivity {
     }
     //redirect to the bill using intent
     public void bill(View view){
-        Intent intent = new Intent(this,MBill.class);
-        Button btn = (Button) findViewById(R.id.button11);
-        startActivity(intent);
+
+        Intent intent1 = new Intent(this,MBill.class);
+        btnBill = findViewById(R.id.button11);
+        String phone1 = textview.getText().toString();
+        intent1.putExtra("EXTRA_MESSAGE",phone1);
+        startActivity(intent1);
+
+
+
+
+
+
     }
     //redirect to the profile using intent
 

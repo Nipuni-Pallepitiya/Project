@@ -8,6 +8,7 @@ public class Bill {
     private String billdateto;
     private String billdatefrom;
     private String billfixprice;
+    private  String phone;
 
     public Bill() {
     }
@@ -54,4 +55,8 @@ public class Bill {
     public void setBillfixprice(String billfixprice) {
         this.billfixprice = billfixprice;
     }
+
+    public void setPhone(String phone){this.phone= phone;}
+
+    public String getPhone(){return phone;}
 }

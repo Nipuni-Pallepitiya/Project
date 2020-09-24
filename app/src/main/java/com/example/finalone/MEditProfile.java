@@ -1,16 +1,14 @@
 package com.example.finalone;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MEditProfile extends AppCompatActivity {
-    private TextView nameTextView,phoneTextView,emailTextView;
+    private EditText nameTextView,phoneTextView,emailTextView;
 
 
     TextView phone;
@@ -46,6 +44,7 @@ public class MEditProfile extends AppCompatActivity {
         btnShow = findViewById(R.id.button13);
         update = findViewById(R.id.button14);
         imageButton1 =  findViewById(R.id.imageButton5);
+
         cus = new Customer();
 
        Intent intent2 = getIntent();
@@ -114,7 +113,7 @@ public class MEditProfile extends AppCompatActivity {
                                                     String cusPhone = (snapshot.child("phoneNo").getValue().toString());
                                                     String cusEmail = (snapshot.child("email").getValue().toString());
 
-                                                    Intent intent2 = new Intent(getBaseContext(), MProfile.class);
+                                                    Intent intent2 = new Intent(getBaseContext(), MProfile2.class);
                                                     intent2.putExtra("FULL", cusName);
                                                     intent2.putExtra("PHONE", cusPhone);
                                                     intent2.putExtra("EMAIL", cusEmail);
@@ -145,6 +144,15 @@ public class MEditProfile extends AppCompatActivity {
                 });
             }
         });
+        Intent intent3 = getIntent();
+        String name = intent3.getStringExtra("name");
+        final String phoneNumber = intent3.getStringExtra("phoneNo");
+        String emailAddress = intent3.getStringExtra("email");
+
+
+        nameTextView.setText(name);
+        phoneTextView.setText(phoneNumber);
+        emailTextView.setText(emailAddress);
 
 
 

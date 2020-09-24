@@ -1,9 +1,8 @@
 package com.example.finalone;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -11,9 +10,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+
 import com.example.finalone.Model.Customer;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class MRegister extends AppCompatActivity {
 
@@ -49,46 +59,109 @@ public class MRegister extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbRef = FirebaseDatabase.getInstance().getReference().child("Customer");
-                try{
-                    if(FullName.length()==0 || email.length()==0 || phone.length()==0 || password.length()==0 || re_enter.length()==0)
-                        Toast.makeText(MRegister.this, "Please fill all details", Toast.LENGTH_SHORT).show();
-                    else if(TextUtils.isEmpty(FullName.getText().toString()))
-                        Toast.makeText(MRegister.this, "Please enter Full Name", Toast.LENGTH_SHORT).show();
-                    else if(TextUtils.isEmpty(phone.getText().toString()))
-                        Toast.makeText(MRegister.this, "Please enter phone number", Toast.LENGTH_SHORT).show();
-                    else if(!phone.getText().toString().matches("[0-9]{10}"))
-                        Toast.makeText(MRegister.this, "Please enter valid phone number", Toast.LENGTH_SHORT).show();
-                    else if(TextUtils.isEmpty(email.getText().toString()))
-                        Toast.makeText(MRegister.this, "Please enter email", Toast.LENGTH_SHORT).show();
-                    else if(!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches())
-                        Toast.makeText(MRegister.this, "Please enter valid email", Toast.LENGTH_SHORT).show();
-                    else if(TextUtils.isEmpty(password.getText().toString()))
-                        Toast.makeText(MRegister.this, "Please enter password", Toast.LENGTH_SHORT).show();
-                    else if(TextUtils.isEmpty(re_enter.getText().toString()))
-                        Toast.makeText(MRegister.this, "Please re enter password", Toast.LENGTH_SHORT).show();
-                    /*else if(!phone.getText().toString().matches(String.valueOf(re_enter)))
-                        Toast.makeText(MRegister.this, "Passwords are not matching", Toast.LENGTH_SHORT).show();*/
-                    else{
-                        cus.setName(FullName.getText().toString().trim());
-                        cus.setPhoneNo(phone.getText().toString().trim());
-                        cus.setEmail(email.getText().toString().trim());
-                        cus.setPassword(password.getText().toString().trim());
-
-                        dbRef.child(phone.getText().toString().trim()).setValue(cus);
-
-                        Toast.makeText(MRegister.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
-                        clearControls();
-                        startActivity(new Intent(MRegister.this,MLogin.class));
-                    }
-
-
-                }catch (Exception e) {
-                    Toast.makeText(MRegister.this, "Can not insert", Toast.LENGTH_SHORT).show();
-                }
+                CreateAccount();
             }
         });
+    }
 
+    private void CreateAccount() {
+        String conpw = re_enter.getText().toString();
+
+        Customer cus  = new Customer();
+        cus.setName(FullName.getText().toString());
+        cus.setPhoneNo(phone.getText().toString());
+        cus.setEmail(email.getText().toString());
+        cus.setPassword(password.getText().toString());
+
+        String name = cus.getName();
+        String phone = cus.getPhoneNo();
+        String email = cus.getEmail();
+        String password = cus.getPassword();
+
+        if(TextUtils.isEmpty(name)){
+            Toast.makeText(this, "Please enter Full name", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(phone)){
+            Toast.makeText(this, "Please enter phone number", Toast.LENGTH_SHORT).show();
+        }
+        else if(!phone.matches("[0-9]{10}")){
+            Toast.makeText(this, "Please enter valid phone", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(email)){
+            Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
+        }
+        else if(!Patterns.EMAIL_ADDRESS.matcher(email.toString()).matches()){
+            Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(password)){
+            Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+        }
+        else if(password.length()<6){
+            Toast.makeText(this, "Please enter password greater than 6 ", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(conpw)){
+            Toast.makeText(this, "Please enter password again", Toast.LENGTH_SHORT).show();
+
+        }
+        else{
+            ValidateCustomer(name,phone,email,password,conpw);
+        }
+    }
+
+    private void ValidateCustomer(final String name, final String phone, final String email, final String password, final String conpw) {
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(!snapshot.child("Customer").child(phone).exists()){
+                    if(password.equals(conpw)){
+                        HashMap<String ,Object> customerDataMap = new HashMap<>();
+                        customerDataMap.put("name",name);
+                        customerDataMap.put("phoneNo",phone);
+                        customerDataMap.put("email",email);
+                        customerDataMap.put("password",password);
+
+                        RootRef.child("Customer").child(phone).updateChildren(customerDataMap)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            Toast.makeText(MRegister.this, "Successfully registered", Toast.LENGTH_SHORT).show();
+
+
+                                            Customer c = new Customer();
+
+                                            c.setName(name);
+                                            c.setPhoneNo(phone);
+                                            c.setEmail(email);
+                                            c.setPassword(password);
+
+                                            Intent intent = new Intent(MRegister.this,MLogin.class);
+                                            startActivity(intent);
+                                        }
+                                        else{
+                                            Toast.makeText(MRegister.this, "Something wrong", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+                    }
+                    else{
+                        Toast.makeText(MRegister.this, "Passwords are not matching", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(MRegister.this, "This " +phone+ " Already exists ", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void clearControls() {

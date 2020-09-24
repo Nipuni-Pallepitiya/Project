@@ -146,6 +146,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                 b1.setBillno(String.valueOf(billno + 1));
                                 b1.setBilldatefrom(b1.getBilldatefrom());
                                 b1.setBilldateto(b1.getBilldateto());
+
                                 b1.setBillfixprice(tvPrice.getText().toString().trim());
                                 dbRef2.child(phone).setValue(b1);
 
@@ -153,6 +154,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                 b1.setBillno(String.valueOf(billno + 1));
                                 b1.setBilldatefrom(b1.getBilldatefrom());
                                 b1.setBilldateto(b1.getBilldateto());
+
                                 b1.setBillfixprice(tvPrice.getText().toString().trim());
 
                                 dbRef2.child(phone).setValue(b1);
@@ -161,6 +163,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                 b1.setBillno(String.valueOf(billno + 1));
                                 b1.setBilldatefrom(b1.getBilldatefrom());
                                 b1.setBilldateto(b1.getBilldateto());
+
                                 b1.setBillfixprice(tvPrice.getText().toString().trim());
 
                                 dbRef2.child(phone).setValue(b1);
@@ -169,6 +172,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                 b1.setBillno(String.valueOf(billno + 1));
                                 b1.setBilldatefrom(b1.getBilldatefrom());
                                 b1.setBilldateto(b1.getBilldateto());
+
                                 b1.setBillfixprice(tvPrice.getText().toString().trim());
 
                                 dbRef2.child(phone).setValue(b1);
@@ -181,6 +185,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                 b1.setBillno(String.valueOf(billno));
                                 b1.setBilldatefrom(b1.getBilldatefrom());
                                 b1.setBilldateto(b1.getBilldateto());
+
                                 b1.setBillfixprice(tvPrice.getText().toString().trim());
 
                                 dbRef2.child(phone).setValue(b1);
@@ -190,6 +195,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                 b1.setBillno(String.valueOf(billno));
                                 b1.setBilldatefrom(b1.getBilldatefrom());
                                 b1.setBilldateto(b1.getBilldateto());
+
                                 b1.setBillfixprice(tvPrice.getText().toString().trim());
 
                                 dbRef2.child(phone).setValue(b1);
@@ -199,6 +205,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                 b1.setBillno(String.valueOf(billno));
                                 b1.setBilldatefrom(b1.getBilldatefrom());
                                 b1.setBilldateto(b1.getBilldateto());
+
                                 b1.setBillfixprice(tvPrice.getText().toString().trim());
 
                                 dbRef2.child(phone).setValue(b1);
@@ -208,6 +215,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                 b1.setBillno(String.valueOf(billno));
                                 b1.setBilldatefrom(b1.getBilldatefrom());
                                 b1.setBilldateto(b1.getBilldateto());
+
                                 b1.setBillfixprice(tvPrice.getText().toString().trim());
 
                                 dbRef2.child(phone).setValue(b1);

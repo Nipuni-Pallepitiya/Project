@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,7 +34,7 @@ public class MLogin extends AppCompatActivity {
         setContentView(R.layout.activity_m_login);
 
         phone = findViewById(R.id.editTextTextPersonName3);
-        password = findViewById(R.id.editTextTextPersonName4);
+        password = findViewById(R.id.editTextTextPassword);
         login = findViewById(R.id.button4);
 
         login.setOnClickListener(new View.OnClickListener() {
