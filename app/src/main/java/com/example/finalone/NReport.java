@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +25,8 @@ public class NReport extends AppCompatActivity {
     TextView tv;
     public static final String EXTRAMESSAGE="message";
     public static final String EXTRAMESSAGE1="phn";
-    String message,phn;
+    public static final String EXTRAMESSAGE2="amtof";
+    String message,phn,message2;
     Button b;
     Button r;
 
@@ -47,38 +49,56 @@ public class NReport extends AppCompatActivity {
         r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phone = tv.getText().toString();
-                intent.putExtra("EXTRA_MESSAGE",phone);
-                final DatabaseReference dbRef=FirebaseDatabase.getInstance().getReference().child("ShareData");
-                Query data= dbRef.orderByChild("phnTo").equalTo(txtPhnTo.getText().toString());
-                data.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                        for(DataSnapshot ds: snapshot.getChildren())
-                        {
-                            message=ds.child("date").getValue().toString();
 
-                        }
+                if(TextUtils.isEmpty(txtPhnTo.getText().toString()))
+                    Toast.makeText(getApplicationContext(),"Enter phnto",Toast.LENGTH_SHORT).show();
 
-                        Intent i=new Intent(NReport.this,NReportDisplay.class);
-                        i.putExtra(EXTRAMESSAGE, message);
-                        i.putExtra(EXTRAMESSAGE1,phn);
-                        //startActivity(intent);
-                        startActivity(i);
+                else {
+                    if (!txtPhnTo.getText().toString().matches("[0-9]{10}"))
+                        Toast.makeText(getApplicationContext(), "Enter correct format", Toast.LENGTH_SHORT).show();
+                    else {
+                        String phone = tv.getText().toString();
+                        intent.putExtra("EXTRA_MESSAGE", phone);
+                        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("ShareData");
+                        Query data = dbRef.orderByChild("phnFromto").equalTo(tv.getText().toString()+txtPhnTo.getText().toString());
+                        data.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                    message = ds.child("date").getValue().toString();
+                                    message2 = ds.child("amt").getValue().toString();
+
+                                }
+
+                                Intent i = new Intent(NReport.this, NReportDisplay.class);
+                                i.putExtra(EXTRAMESSAGE, message);
+                                i.putExtra(EXTRAMESSAGE1, phn);
+                                i.putExtra(EXTRAMESSAGE2, message2);
+                                //startActivity(intent);
+                                startActivity(i);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
 
                     }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                }
 
 
 
             }
         });
+
+
+
+
 
     }
 

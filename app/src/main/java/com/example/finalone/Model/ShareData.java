@@ -7,9 +7,19 @@ public class ShareData {
     private String phnTo;
     private String amt;
     private String date;
+    private String phnFromto;
+
+
 
     public ShareData() {
 
+    }
+    public String getPhnFromto() {
+        return phnFromto;
+    }
+
+    public void setPhnFromto(String phnFromto) {
+        this.phnFromto = phnFromto;
     }
 
     public String getId() {

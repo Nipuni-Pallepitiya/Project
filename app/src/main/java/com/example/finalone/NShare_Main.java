@@ -16,11 +16,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finalone.Model.ShareData;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 
 
 public class NShare_Main extends AppCompatActivity {
@@ -33,6 +40,7 @@ public class NShare_Main extends AppCompatActivity {
     TextView tv,tvphnfrom;
     long maxid=0;
     public static final String EXTRAMESSAGE="message";
+    public static final String EXTRAMESSAGE2="message2";
 
   /* // public static final String EXTRA_MESSAGE = "com.example.finalone.MESSAGE";
     public static final String EXTRA_MESSAGE2 = "com.example.finalone.MESSAGE2";
@@ -80,8 +88,18 @@ public class NShare_Main extends AppCompatActivity {
         btnshared.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                CreateShareData();
+            }
+        });
+
+
+        /*btnshared.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Validatephone();
                 dbRef= FirebaseDatabase.getInstance().getReference().child("ShareData");
-                dbRef.addValueEventListener(new ValueEventListener() {
+                dbRef.addValueEventListener(new ValueEventListener()
+                {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists())
@@ -135,7 +153,7 @@ public class NShare_Main extends AppCompatActivity {
 
                                 clearControls();
 
-                                Intent intent = new Intent(NShare_Main.this, NShareDisplay.class);
+                                Intent intent = new Intent(ShareDataForm.this, SharedataDisplay.class);
                                 String message = String.valueOf(maxid + 1);
                                 intent.putExtra(EXTRAMESSAGE, message);
                                 startActivity(intent);
@@ -159,74 +177,179 @@ public class NShare_Main extends AppCompatActivity {
 
 
             }
+            });
+            }
+
+            public void clearControls() {
+
+                txtPhnTo.setText("");
+                txtPhnFrom.setText("");
+                txtAmt.setText("");
+                txtDate.setText("");
+
+            }
+            private void Validatephone() {
+                final DatabaseReference RootRef;
+                RootRef = FirebaseDatabase.getInstance().getReference();
+                RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (!(snapshot.child("ShareData").child(txtPhnFrom.toString()).exists())) {
+                            std.setId(txtPhnFrom.getText().toString().trim());
+                            std.setPhnTo(txtPhnTo.getText().toString().trim());
+                            std.setPhnFrom(txtPhnFrom.getText().toString().trim());
+                            std.setAmt(txtAmt.getText().toString().trim());
+                            std.setDate(txtDate.getText().toString().trim());
+                            dbRef.child(txtPhnFrom.getText().toString().trim()).setValue(std);
+
+                            Toast.makeText(getApplicationContext(), "ISaved", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ShareDataForm.this, SharedataDisplay.class);
+                            String message = txtPhnFrom.getText().toString().trim();
+                            intent.putExtra(EXTRAMESSAGE, message);
+                            startActivity(intent);
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Exists", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });*/
+    }
+
+    private void CreateShareData() {
+
+        ShareData std=new ShareData();
+
+        std.setId(txtPhnFrom.getText().toString()+txtPhnTo.getText().toString());
+        std.setPhnTo(txtPhnTo.getText().toString());
+        std.setPhnFrom(txtPhnFrom.getText().toString());
+        std.setAmt(txtAmt.getText().toString());
+        std.setDate(txtDate.getText().toString());
+        std.setPhnFromto(txtPhnFrom.getText().toString()+txtPhnTo.getText().toString());
+
+        String id=std.getId();
+        String phnto=std.getPhnTo();
+        String phnFrom=std.getPhnFrom();
+        String amt=std.getAmt();
+        String date=std.getDate();
+        String phnFromto=std.getPhnFromto();
+
+
+
+
+        if(TextUtils.isEmpty(txtPhnTo.getText().toString()))
+            Toast.makeText(getApplicationContext(),"Enter phnto",Toast.LENGTH_SHORT).show();
+        else if(TextUtils.isEmpty(txtPhnFrom.getText().toString()))
+            Toast.makeText(getApplicationContext(),"Enter phnfrom",Toast.LENGTH_SHORT).show();
+        else if(TextUtils.isEmpty(txtAmt.getText().toString()))
+            Toast.makeText(getApplicationContext(),"Enter amt",Toast.LENGTH_SHORT).show();
+        else if(TextUtils.isEmpty(txtDate.getText().toString()))
+            Toast.makeText(getApplicationContext(),"Enter date",Toast.LENGTH_SHORT).show();
+        else {
+            if (!txtPhnTo.getText().toString().matches("[0-9]{10}"))
+                Toast.makeText(getApplicationContext(), "Enter correct format", Toast.LENGTH_SHORT).show();
+            else if (!txtPhnFrom.getText().toString().matches("[0-9]{10}"))
+                Toast.makeText(getApplicationContext(), "Enter correct format", Toast.LENGTH_SHORT).show();
+            else {
+                int x = Integer.parseInt(txtAmt.getText().toString());
+                if (x > 1024)
+                    Toast.makeText(getApplicationContext(), "Enter correct Amount", Toast.LENGTH_SHORT).show();
+                else {
+                    if (txtPhnTo.getText().toString().equals(txtPhnFrom.getText().toString()))
+                        Toast.makeText(getApplicationContext(), "Cant do transaction", Toast.LENGTH_SHORT).show();
+                    else if (!isValiddate(txtDate.getText().toString()))
+                        Toast.makeText(getApplicationContext(), "Date invalid", Toast.LENGTH_SHORT).show();
+                    else
+                        Validatephnone(id, phnto, phnFrom, amt, date,phnFromto);
+                }
+            }
+        }
+
+
+    }
+
+    private void Validatephnone(final String id, final String phnto, final String phnFrom, final String amt, final String date,final String phnFromto) {
+
+        final DatabaseReference RootRef;
+        RootRef=FirebaseDatabase.getInstance().getReference();
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(!(snapshot.child("ShareData").child(phnFromto.toString()).exists()))
+                {
+
+                    HashMap<String,Object> userdataMap=new HashMap<>();
+                    userdataMap.put("phnFrom",phnFrom);
+                    userdataMap.put("phnTo",phnto);
+                    userdataMap.put("id",phnFromto);
+                    userdataMap.put("date",date);
+                    userdataMap.put("amt",amt);
+                    userdataMap.put("phnFromto",phnFromto);
+
+
+                    RootRef.child("ShareData").child(phnFromto.toString()).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(NShare_Main.this, "Successfull", Toast.LENGTH_SHORT).show();
+
+                                ShareData s1=new ShareData();
+                                s1.setAmt(amt);
+                                s1.setPhnTo(phnto);
+                                s1.setPhnFrom(phnFrom);
+                                s1.setDate(date);
+                                s1.setId(phnFromto);
+                                s1.setPhnFromto(phnFromto);
+
+                                Intent intent = new Intent(NShare_Main.this, NShareDisplay.class);
+                                String message = txtPhnFrom.getText().toString().trim();
+                                String message2=txtPhnFrom.getText().toString().trim()+txtPhnTo.getText().toString();
+                                intent.putExtra(EXTRAMESSAGE, message);
+                                intent.putExtra(EXTRAMESSAGE2,message2);
+                                startActivity(intent);
+
+                            }
+
+                        }
+                    });
+
+
+
+
+                }
+                else
+                {
+                    Toast.makeText(NShare_Main.this, "Not Successfull", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
-
-
     }
 
+    public boolean isValiddate(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date testdate = null;
+        try {
+            testdate = sdf.parse(date);
+        } catch (ParseException e) {
+            String errorMessage = "the date is invalid";
+            return false;
 
-    /*public void OnClickShareData(View v) {
-
-        Intent intent = new Intent(this, NShareDisplay.class);
-        Button btn1 = (Button) findViewById(R.id.nbutton3);
-
-
-        btn= findViewById(R.id.nbutton3);
-        //dataid = findViewById(R.id.NshareData);
-        phnfrom = findViewById(R.id.nPhnFrom);
-        phnTo = findViewById(R.id.NPhnTo);
-        amt = findViewById(R.id.NAmtData);
-        date = findViewById(R.id.NDate);
-
-
-        /*EditText editText = (EditText) findViewById(R.id.NshareData);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);*/
-
-
-        /*EditText editText2 = (EditText) findViewById(R.id.nPhnFrom);
-        String message2 = editText2.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE2, message2);
-
-
-        EditText editText3 = (EditText) findViewById(R.id.NPhnTo);
-        String message3 = editText3.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE3, message3);
-
-        EditText editText4 = (EditText) findViewById(R.id.NAmtData);
-        String message4 = editText4.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE4, message4);
-
-
-        EditText editText5 = (EditText) findViewById(R.id.NDate);
-        String message5 = editText5.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE5, message5);
-
-
-        if (!dataid.getText().toString().isEmpty() && !phnfrom.getText().toString().isEmpty() && !phnTo.getText().toString().isEmpty() && !amt.getText().toString().isEmpty() && !date.getText().toString().isEmpty()) {
-            Toast.makeText(NShare_Main.this, "Processing request", Toast.LENGTH_LONG).show();
-            startActivity(intent);
-
-        } else
-            Toast.makeText(NShare_Main.this, "Please enter all details", Toast.LENGTH_LONG).show();
-
-
-    }*/
-
-    public void NBackClick(View v)
-    {
-        Intent intent = new Intent(this, NShare_Data.class);
-        Button btn1 = (Button) findViewById(R.id.NBackMain);
-        startActivity(intent);
-
-    }
-    public void clearControls()
-    {
-
-        txtPhnTo.setText("");
-        txtPhnFrom.setText("");
-        txtAmt.setText("");
-        txtDate.setText("");
-
+        }
+        if(!sdf.format(testdate).equals(date))
+        {
+            String errorMessage = "the date is invalid";
+            return false;
+        }
+        return true;
     }
 }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class NReportDisplay extends AppCompatActivity {
 
     TextView tv;
-    TextView phnno;
+    TextView phnno,amtphn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,10 @@ public class NReportDisplay extends AppCompatActivity {
         Intent i=getIntent();
         String phnmsg=i.getStringExtra(NReport.EXTRAMESSAGE1);
         String message= i.getStringExtra(NReport.EXTRAMESSAGE);
+        String amt=i.getStringExtra(NReport.EXTRAMESSAGE2);
         tv=findViewById(R.id.Ndate1);
+        amtphn=findViewById(R.id.Namt1);
+        amtphn.setText(amt);
         phnno=findViewById(R.id.ntextView);
         phnno.setText(phnmsg);
         tv.setText(message);
