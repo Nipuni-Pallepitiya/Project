@@ -222,52 +222,78 @@ public class NShare_Main extends AppCompatActivity {
 
     private void CreateShareData() {
 
-        ShareData std=new ShareData();
+        final DatabaseReference FixRef;
+        FixRef=FirebaseDatabase.getInstance().getReference();
+        FixRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.child("FixData").child(tv.getText().toString()).exists())
+                {
+                    ShareData std=new ShareData();
 
-        std.setId(txtPhnFrom.getText().toString()+txtPhnTo.getText().toString());
-        std.setPhnTo(txtPhnTo.getText().toString());
-        std.setPhnFrom(txtPhnFrom.getText().toString());
-        std.setAmt(txtAmt.getText().toString());
-        std.setDate(txtDate.getText().toString());
-        std.setPhnFromto(txtPhnFrom.getText().toString()+txtPhnTo.getText().toString());
+                    std.setId(txtPhnFrom.getText().toString()+txtPhnTo.getText().toString());
+                    std.setPhnTo(txtPhnTo.getText().toString());
+                    std.setPhnFrom(txtPhnFrom.getText().toString());
+                    std.setAmt(txtAmt.getText().toString());
+                    std.setDate(txtDate.getText().toString());
+                    std.setPhnFromto(txtPhnFrom.getText().toString()+txtPhnTo.getText().toString());
 
-        String id=std.getId();
-        String phnto=std.getPhnTo();
-        String phnFrom=std.getPhnFrom();
-        String amt=std.getAmt();
-        String date=std.getDate();
-        String phnFromto=std.getPhnFromto();
-
-
+                    String id=std.getId();
+                    String phnto=std.getPhnTo();
+                    String phnFrom=std.getPhnFrom();
+                    String amt=std.getAmt();
+                    String date=std.getDate();
+                    String phnFromto=std.getPhnFromto();
 
 
-        if(TextUtils.isEmpty(txtPhnTo.getText().toString()))
-            Toast.makeText(getApplicationContext(),"Enter phnto",Toast.LENGTH_SHORT).show();
-        else if(TextUtils.isEmpty(txtPhnFrom.getText().toString()))
-            Toast.makeText(getApplicationContext(),"Enter phnfrom",Toast.LENGTH_SHORT).show();
-        else if(TextUtils.isEmpty(txtAmt.getText().toString()))
-            Toast.makeText(getApplicationContext(),"Enter amt",Toast.LENGTH_SHORT).show();
-        else if(TextUtils.isEmpty(txtDate.getText().toString()))
-            Toast.makeText(getApplicationContext(),"Enter date",Toast.LENGTH_SHORT).show();
-        else {
-            if (!txtPhnTo.getText().toString().matches("[0-9]{10}"))
-                Toast.makeText(getApplicationContext(), "Enter correct format", Toast.LENGTH_SHORT).show();
-            else if (!txtPhnFrom.getText().toString().matches("[0-9]{10}"))
-                Toast.makeText(getApplicationContext(), "Enter correct format", Toast.LENGTH_SHORT).show();
-            else {
-                int x = Integer.parseInt(txtAmt.getText().toString());
-                if (x > 1024)
-                    Toast.makeText(getApplicationContext(), "Enter correct Amount", Toast.LENGTH_SHORT).show();
-                else {
-                    if (txtPhnTo.getText().toString().equals(txtPhnFrom.getText().toString()))
-                        Toast.makeText(getApplicationContext(), "Cant do transaction", Toast.LENGTH_SHORT).show();
-                    else if (!isValiddate(txtDate.getText().toString()))
-                        Toast.makeText(getApplicationContext(), "Date invalid", Toast.LENGTH_SHORT).show();
-                    else
-                        Validatephnone(id, phnto, phnFrom, amt, date,phnFromto);
+
+
+                    if(TextUtils.isEmpty(txtPhnTo.getText().toString()))
+                        Toast.makeText(getApplicationContext(),"Enter phnto",Toast.LENGTH_SHORT).show();
+                    else if(TextUtils.isEmpty(txtPhnFrom.getText().toString()))
+                        Toast.makeText(getApplicationContext(),"Enter phnfrom",Toast.LENGTH_SHORT).show();
+                    else if(TextUtils.isEmpty(txtAmt.getText().toString()))
+                        Toast.makeText(getApplicationContext(),"Enter amt",Toast.LENGTH_SHORT).show();
+                    else if(TextUtils.isEmpty(txtDate.getText().toString()))
+                        Toast.makeText(getApplicationContext(),"Enter date",Toast.LENGTH_SHORT).show();
+                    else {
+                        if (!txtPhnTo.getText().toString().matches("[0-9]{10}"))
+                            Toast.makeText(getApplicationContext(), "Enter correct format", Toast.LENGTH_SHORT).show();
+                        else if (!txtPhnFrom.getText().toString().matches("[0-9]{10}"))
+                            Toast.makeText(getApplicationContext(), "Enter correct format", Toast.LENGTH_SHORT).show();
+                        else {
+                            int x = Integer.parseInt(txtAmt.getText().toString());
+                            if (x > 1024)
+                                Toast.makeText(getApplicationContext(), "Enter correct Amount", Toast.LENGTH_SHORT).show();
+                            else {
+                                if (txtPhnTo.getText().toString().equals(txtPhnFrom.getText().toString()))
+                                    Toast.makeText(getApplicationContext(), "Cant do transaction", Toast.LENGTH_SHORT).show();
+                                else if (!isValiddate(txtDate.getText().toString()))
+                                    Toast.makeText(getApplicationContext(), "Date invalid", Toast.LENGTH_SHORT).show();
+                                else
+                                    Validatephnone(id, phnto, phnFrom, amt, date,phnFromto);
+                            }
+                        }
+                    }
+
+
+
                 }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Please activate fix data package", Toast.LENGTH_SHORT).show();
+                }
+
             }
-        }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
 
 
     }
