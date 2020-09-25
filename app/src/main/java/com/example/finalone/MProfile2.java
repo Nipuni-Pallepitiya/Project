@@ -70,5 +70,11 @@ public class MProfile2 extends AppCompatActivity {
                 });
             }
         });
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MProfile2.this,MLogin.class));
+            }
+        });
     }
 }

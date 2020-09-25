@@ -1,9 +1,10 @@
-package com.example.finalone;
+package com.example.finalone.Model;
 
 public class CashPayment {
     String cBillNo;
     String pBillNo;
     String date;
+    String phone;
 
     public CashPayment() {
     }
@@ -31,4 +32,8 @@ public class CashPayment {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public void setPhone(String phone){this.phone=phone;}
+
+    public String getPhone(){return phone;}
 }

@@ -55,7 +55,7 @@ public class MBill extends AppCompatActivity {
         phoneno.setText(phone1);
 
 
-
+        //pass values
         btnCredit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

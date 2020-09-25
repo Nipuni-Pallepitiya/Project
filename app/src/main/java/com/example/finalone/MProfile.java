@@ -75,7 +75,7 @@ public class MProfile extends AppCompatActivity {
         phoneTextView.setText(phoneNumber);
         emailTextView.setText(emailAddress);
 
-
+        //delete user profile
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +88,7 @@ public class MProfile extends AppCompatActivity {
                             dbRef.removeValue();
 
                             Toast.makeText(MProfile.this, "Delete Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(MProfile.this,MLogin.class));
+                            startActivity(new Intent(MProfile.this,MRegister.class));
 
                         }else{
                             Toast.makeText(MProfile.this, "Can not delete", Toast.LENGTH_SHORT).show();

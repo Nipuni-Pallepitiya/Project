@@ -55,7 +55,7 @@ public class MLogin extends AppCompatActivity {
         });
 
     }
-
+    //check phone number and password from database
     private void validateDetails(final String phn, final String pwd) {
         final DatabaseReference ref;
         ref = FirebaseDatabase.getInstance().getReference();

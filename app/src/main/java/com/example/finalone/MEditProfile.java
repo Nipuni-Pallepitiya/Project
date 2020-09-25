@@ -78,6 +78,7 @@ public class MEditProfile extends AppCompatActivity {
             }
         });
 
+       //edit details
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,6 +145,7 @@ public class MEditProfile extends AppCompatActivity {
                 });
             }
         });
+        //pass values
         Intent intent3 = getIntent();
         String name = intent3.getStringExtra("name");
         final String phoneNumber = intent3.getStringExtra("phoneNo");

@@ -21,6 +21,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.finalone.Model.Cash;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,8 +33,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class CcashDetails extends AppCompatActivity {
+    //assign variables
     TextView etDate,tvTime;
     DatePickerDialog.OnDateSetListener setListener;
     Button btnDate,btnTime,btnok,btnShow,btnEdit;
@@ -68,6 +71,7 @@ public class CcashDetails extends AppCompatActivity {
         tvbranchName = findViewById(R.id.editTextTextPersonName4);
         tvbranchNo = findViewById(R.id.editTextTextPersonName8);
 
+        //retrieve data from Cash table
         final Intent intent3 = getIntent();
 
         String dateFrom = intent3.getStringExtra("billdateFrom");
@@ -99,7 +103,7 @@ public class CcashDetails extends AppCompatActivity {
             }
         });
 
-
+        //add datepicker
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
@@ -121,6 +125,7 @@ public class CcashDetails extends AppCompatActivity {
             }
         });
 
+        //add timePicker
         btnTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,7 +167,7 @@ public class CcashDetails extends AppCompatActivity {
             }
         });
 
-        btnok.setOnClickListener(new View.OnClickListener() {
+        /*btnok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String branchNo1 = tvbranchNo.getText().toString();
@@ -243,7 +248,13 @@ public class CcashDetails extends AppCompatActivity {
                     Toast.makeText(CcashDetails.this, "Can not save", Toast.LENGTH_SHORT).show();
                 }
             }
-    });
+    });*/
+        btnok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CreateAccount();
+            }
+        });
 
 
       /*  btnShow.setOnClickListener(new View.OnClickListener() {
@@ -339,6 +350,121 @@ public class CcashDetails extends AppCompatActivity {
             }
         });*/
 }
+
+    private void CreateAccount() {
+        Cash cash = new Cash();
+        cash.setBranchName(tvbranchName.getText().toString());
+        cash.setBranchNo(tvbranchNo.getText().toString());
+        cash.setDate(etDate.getText().toString());
+        cash.setTime(tvTime.getText().toString());
+        cash.setPhoneNo(tvPhoneNo.getText().toString());
+
+        String branchName = cash.getBranchName();
+        String branchNo = cash.getBranchNo();
+        String date = cash.getDate();
+        String time = cash.getTime();
+        String phone = cash.getPhoneNo();
+
+        if (tvbranchName.length() == 0 || tvbranchNo.length() == 0 || tvTime.length() == 0 || etDate.length() == 0)
+            Toast.makeText(CcashDetails.this, "Please enter all details", Toast.LENGTH_SHORT).show();
+        else if (TextUtils.isEmpty(tvbranchName.getText().toString()))
+            Toast.makeText(CcashDetails.this, "Please enter Branch name", Toast.LENGTH_SHORT).show();
+
+        else if (TextUtils.isEmpty(tvbranchNo.getText().toString()))
+            Toast.makeText(CcashDetails.this, "Please enter Branch No", Toast.LENGTH_SHORT).show();
+        else if (!branchNo.matches("[0-9]{10}"))
+            Toast.makeText(CcashDetails.this, "Please enter valid Branch Number", Toast.LENGTH_SHORT).show();
+        else if (TextUtils.isEmpty(etDate.getText().toString()))
+            Toast.makeText(CcashDetails.this, "Please enter Receipt date", Toast.LENGTH_SHORT).show();
+        else if (TextUtils.isEmpty(tvTime.getText().toString()))
+            Toast.makeText(CcashDetails.this, "Please enter Recepit time", Toast.LENGTH_SHORT).show();
+        else{
+            ValidatePhone(phone,branchName,branchNo,date,time,cbillNo);
+        }
+
+
+
+    }
+
+    private void ValidatePhone(final String phone, final String branchName, final String branchNo, final String date, final String time, final long cbillNo) {
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(!snapshot.child("Cash").child(phone+date+time).exists()){
+                    HashMap<String ,Object>cashMap = new HashMap<>();
+                    cashMap.put("branchName",branchName);
+                    cashMap.put("branchNo",branchNo);
+                    cashMap.put("cashNo",cbillNo+1);
+                    cashMap.put("date",date);
+                    cashMap.put("time",time);
+                    cashMap.put("phoneNo",phone);
+
+                    RootRef.child("Cash").child(phone+date+time).updateChildren(cashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(CcashDetails.this, "Saved successfully", Toast.LENGTH_SHORT).show();
+                                clearControls();
+
+                                Cash c = new Cash();
+                                c.setBranchName(branchName);
+                                c.setBranchNo(branchNo);
+                                c.setDate(date);
+                                c.setTime(time);
+                                c.setCashno(String.valueOf(cbillNo));
+                                c.setPhoneNo(phone);
+
+                                reff = FirebaseDatabase.getInstance().getReference().child("Cash").child(phone+date+time);
+                                reff.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if (snapshot.hasChildren()) {
+                                            String amount = tvPrice.getText().toString();
+                                            String branchName = (snapshot.child("branchName").getValue().toString());
+                                            String branchNo = (snapshot.child("branchNo").getValue().toString());
+                                            String date = (snapshot.child("date").getValue().toString());
+                                            String time = (snapshot.child("time").getValue().toString());
+                                            String phone = (snapshot.child("phoneNo").getValue().toString());
+                                            String billNo = (snapshot.child("cashNo").getValue().toString());
+
+                                            Intent intent4 = new Intent(CcashDetails.this, Ccashsuccessful.class);
+                                            intent4.putExtra("amount", amount);
+                                            intent4.putExtra("branchName", branchName);
+                                            intent4.putExtra("branchNo", branchNo);
+                                            intent4.putExtra("date", date);
+                                            intent4.putExtra("time", time);
+                                            intent4.putExtra("phone", phone);
+                                            intent4.putExtra("billno",billNo);
+
+                                            startActivity(intent4);
+
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
+                            }
+                        }
+                    });
+                }else{
+                    Toast.makeText(CcashDetails.this, "Already saved same Information", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     private void clearControls() {
         etDate.setText("");
