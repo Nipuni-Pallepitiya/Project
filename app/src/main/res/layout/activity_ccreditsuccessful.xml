@@ -6,21 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".Ccreditsuccessful">
 
+    <TextView
+        android:id="@+id/datet"
+        android:layout_width="119dp"
+        android:layout_height="25dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.993"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.334" />
+
+    <TextView
+        android:id="@+id/datef"
+        android:layout_width="115dp"
+        android:layout_height="26dp"
+        android:text="@string/Date"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
     <Button
-        android:id="@+id/c_button50"
+        android:id="@+id/menu"
         android:layout_width="296dp"
         android:layout_height="32dp"
         android:background="#0A1C96C6"
-        android:onClick="credit4"
-        android:text="@string/c.viewcreditDetails"
+        android:text="@string/c.Gotomenu"
         android:textColor="#1E81CF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="0.872" />
 
     <View
         android:id="@+id/view18"
@@ -95,20 +121,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView50"
-        android:layout_width="117dp"
-        android:layout_height="32dp"
-        android:text="@string/c.Date"
-        android:textColor="#ECE4E4"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.902"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364" />
-
-    <TextView
         android:id="@+id/textView68"
         android:layout_width="190dp"
         android:layout_height="30dp"
@@ -120,21 +132,21 @@
         app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <TextView
-        android:id="@+id/textView84"
-        android:layout_width="229dp"
+        android:id="@+id/textView41"
+        android:layout_width="76dp"
         android:layout_height="26dp"
-        android:text="@string/Date"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:text="@string/Bill_Period"
+        android:textColor="#F6F1F1"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <TextView
         android:id="@+id/textView85"
@@ -161,7 +173,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.527" />
 
     <View
         android:id="@+id/view24"
@@ -296,10 +309,9 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView91"
+        android:id="@+id/phone1"
         android:layout_width="158dp"
         android:layout_height="32dp"
-        android:text="@string/Phone"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -311,37 +323,35 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <TextView
-        android:id="@+id/textView92"
-        android:layout_width="71dp"
-        android:layout_height="24dp"
-        android:text="@string/Bill_Period"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.319" />
-
-    <TextView
-        android:id="@+id/textView93"
+        android:id="@+id/amount"
         android:layout_width="86dp"
         android:layout_height="26dp"
-        android:text="@string/c.amount"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.429" />
+        app:layout_constraintVertical_bias="0.466" />
 
     <TextView
-        android:id="@+id/textView94"
+        android:id="@+id/billno"
+        android:layout_width="103dp"
+        android:layout_height="28dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.827"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395" />
+
+    <TextView
+        android:id="@+id/phone2"
         android:layout_width="135dp"
         android:layout_height="30dp"
-        android:text="@string/c.PhoneNo"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -349,37 +359,20 @@
         app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.392" />
 
     <TextView
-        android:id="@+id/textView95"
+        android:id="@+id/cno"
         android:layout_width="182dp"
         android:layout_height="33dp"
-        android:text="@string/c.creditcardnumber"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintHorizontal_bias="0.965"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
-
-    <Button
-        android:id="@+id/c_btn1"
-        android:layout_width="198dp"
-        android:layout_height="60dp"
-        android:background="#2196F3"
-        android:onClick="credit3"
-        android:text="@string/c.Gotomenu"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.943" />
+        app:layout_constraintVertical_bias="0.528" />
 
     <ImageView
         android:id="@+id/imageView22"

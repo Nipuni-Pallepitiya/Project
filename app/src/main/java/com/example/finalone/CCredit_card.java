@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.finalone.Model.CreditCard;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CCredit_card extends AppCompatActivity {
     TextView tvPhone,tvDateFrom,tvDateTo,tvPrice;
-    Button btnCash;
+    Button btnCash, credit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class CCredit_card extends AppCompatActivity {
         tvPrice = findViewById(R.id.textView109);
         tvPhone = findViewById(R.id.textView21);
         btnCash = findViewById(R.id.c_button20);
+        credit = findViewById(R.id.btncredit);
 
 
 
@@ -84,11 +86,50 @@ public class CCredit_card extends AppCompatActivity {
             }
         });
 
+        credit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Bill").child(phone);
+                readRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.hasChildren()) {
+
+                            String billNo = (snapshot.child("billno").getValue().toString());
+                            String billFrom = tvDateFrom.getText().toString();
+                            String billTo = tvDateTo.getText().toString();
+                            String Price = (snapshot.child("billfixprice").getValue().toString());
+                            String phone = tvPhone.getText().toString();
+
+
+
+                            Intent intent3 = new Intent(CCredit_card.this, Ccreditcard2.class);
+
+                            intent3.putExtra("phone", phone);
+                            intent3.putExtra("billFrom", billFrom);
+                            intent3.putExtra("billTo", billTo);
+                            intent3.putExtra("billfixprice", Price);
+                            intent3.putExtra("billNo",billNo);
+
+
+
+                            startActivity(intent3);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
     }
 
     public void creditCard(View view){
         Intent credit = new Intent(this, Ccreditcard2.class);
-        Button creditButton = (Button) findViewById(R.id.c_button18);
+        Button creditButton = (Button) findViewById(R.id.btncredit);
         startActivity(credit);
     }
 

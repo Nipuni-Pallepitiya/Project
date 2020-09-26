@@ -10,11 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MProfile2"></activity>
-        <activity android:name=".Cupdatecreditdcarddetails" />
         <activity android:name=".Cupdatecreditcarddetails" />
         <activity android:name=".Ccreditsuccessful" />
-        <activity android:name=".Ccreditcarddetails" />
-        <activity android:name=".Ccreditcard3" />
         <activity android:name=".Ccreditcard2" />
         <activity android:name=".Ccashsuccessful" />
         <activity android:name=".CcashDetails" />
