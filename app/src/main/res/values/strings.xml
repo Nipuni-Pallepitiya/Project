@@ -63,7 +63,7 @@
 
     <string name="p_selectpackagebtn">SELECT PACKAGE</string>
     <string name="p_addmoredatabtn">ADD MORE DATA</string>
-    <string name="p_viewmypackagesbtn">VIEW MY PACKAGES</string>
+    <string name="p_viewmypackagesbtn">VIEW SUMMARY</string>
     <string name="p_viewpack">VIEW PACKAGE</string>
     <string name="p_packdetails">PACKAGE DETAILS</string>
     <string name="p_packid">PACKAGE ID</string>
@@ -86,7 +86,10 @@
     <string name="p_datapack2">3 DAY INTERNET</string>
     <string name="p_datapack3">7 DAY INTERNET</string>
     <string name="p_datapack4">21 DAY INTERNET</string>
-    <string name="p_mypackages">MY PACKAGES</string>
+    <string name="p_mypackages">FIXED PACKAGE SUMMARY</string>
+    <string name="p_packagename">PACKAGE NAME</string>
+    <string name="p_packfrom">ACTIVATED DATE</string>
+    <string name="p_packto">VALID UNTIL</string>
     <string name="p_todo">TODO</string>
 
     <string name="c.payment">Payment</string>

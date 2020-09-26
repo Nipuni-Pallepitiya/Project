@@ -94,6 +94,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                             dbRef1.child(phone).setValue(f1);
 
                             Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
                         }
                         else if(id == "2"){
 
@@ -103,6 +104,9 @@ public class Pfixed_package_details extends AppCompatActivity {
                             f1.setFixdateto(f1.getFixdateto());
                             f1.setFixdata(tvAny.getText().toString().trim());
                             dbRef1.child(phone).setValue(f1);
+
+                            Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
                         }
                         else if(id == "3"){
 
@@ -112,7 +116,9 @@ public class Pfixed_package_details extends AppCompatActivity {
                             f1.setFixdateto(f1.getFixdateto());
                             f1.setFixdata(tvAny.getText().toString().trim());
                             dbRef1.child(phone).setValue(f1);
+
                             Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
 
                         }
                         else{
@@ -123,6 +129,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                             f1.setFixdata(tvAny.getText().toString().trim());
                             dbRef1.child(phone).setValue(f1);
                             Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
                         }
                     }
 

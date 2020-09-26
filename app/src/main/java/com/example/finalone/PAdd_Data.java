@@ -63,155 +63,37 @@ public class PAdd_Data extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Intent i2 = new Intent(getBaseContext(), Pview_my_packages.class);
-                i2.putExtra("phone", phone);
-                startActivity(i2);
 
-            }
-        });
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i1 = getIntent();
-                String phone = i1.getStringExtra("phone");
-
-
-                DatabaseReference readRef1 = FirebaseDatabase.getInstance().getReference().child("FixData").child(phone);
-                readRef1.addListenerForSingleValueEvent(new ValueEventListener() {
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("FixData").child(phone);
+                readRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.hasChildren()) {
-                            String fixname = (dataSnapshot.child("fixname").getValue().toString());
-
-
-                            Intent i1 = getIntent();
-                            String phone = i1.getStringExtra("phone");
+                            String packname = (dataSnapshot.child("fixname").getValue().toString());
+                            String packactive = (dataSnapshot.child("fixdatefrom").getValue().toString());
+                            String packvalid = (dataSnapshot.child("fixdateto").getValue().toString());
 
                             Intent i2 = new Intent(getBaseContext(), Pview_my_packages.class);
-                            i2.putExtra("fixname", fixname);
+                            i2.putExtra("name", packname);
+                            i2.putExtra("from", packactive);
+                            i2.putExtra("to", packvalid);
                             i2.putExtra("phone", phone);
+
                             startActivity(i2);
 
                         } else
-                            Toast.makeText(getApplicationContext(), "No Activated packages", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "No Activated Fixed Package", Toast.LENGTH_SHORT).show();
                     }
 
-
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-                DatabaseReference readRef2 = FirebaseDatabase.getInstance().getReference().child("CusData").child("1").child(phone);
-                readRef2.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChildren()) {
-                            String dataname1 = (dataSnapshot.child("dataname").getValue().toString());
-
-                            Intent i1 = getIntent();
-                            String phone = i1.getStringExtra("phone");
-
-                            Intent i2 = new Intent(getBaseContext(), Pview_my_packages.class);
-                            i2.putExtra("dname1", dataname1);
-                            i2.putExtra("phone", phone);
-                            startActivity(i2);
-
-                        } else{}
-
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-                DatabaseReference readRef3 = FirebaseDatabase.getInstance().getReference().child("CusData").child("2").child(phone);
-                readRef3.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChildren()) {
-                            String dataname2 = (dataSnapshot.child("dataname").getValue().toString());
-
-                            Intent i1 = getIntent();
-                            String phone = i1.getStringExtra("phone");
-
-                            Intent i2 = new Intent(getBaseContext(), Pview_my_packages.class);
-                            i2.putExtra("dname2", dataname2);
-                            i2.putExtra("phone", phone);
-                            startActivity(i2);
-                        }else{}
-
-
-
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-                DatabaseReference readRef4 = FirebaseDatabase.getInstance().getReference().child("CusData").child("3").child(phone);
-                readRef4.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChildren()) {
-                            String dataname3 = (dataSnapshot.child("dataname").getValue().toString());
-
-
-                            Intent i1 = getIntent();
-                            String phone = i1.getStringExtra("phone");
-
-                            Intent i2 = new Intent(getBaseContext(), Pview_my_packages.class);
-                            i2.putExtra("dname3", dataname3);
-
-                            i2.putExtra("phone", phone);
-                            startActivity(i2);
-
-                        } else{}
-
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-                DatabaseReference readRef5 = FirebaseDatabase.getInstance().getReference().child("CusData").child("4").child(phone);
-                readRef5.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChildren()) {
-                            String dataname4 = (dataSnapshot.child("dataname").getValue().toString());
-
-
-                            Intent i1 = getIntent();
-                            String phone = i1.getStringExtra("phone");
-
-                            Intent i2 = new Intent(getBaseContext(), Pview_my_packages.class);
-                            i2.putExtra("dname4", dataname4);
-
-                            i2.putExtra("phone", phone);
-                            startActivity(i2);
-
-                        } else{}
-
-                    }
-
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
             }
+
+
         });
+
     }
 }
