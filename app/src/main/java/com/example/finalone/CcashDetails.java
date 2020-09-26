@@ -45,7 +45,7 @@ public class CcashDetails extends AppCompatActivity {
     DatabaseReference reff;
     Cash cash;
     EditText tvbranchName,tvbranchNo;
-    long cbillNo=0;
+   // long cbillNo=0;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class CcashDetails extends AppCompatActivity {
         tvBillFrom = findViewById(R.id.textView25);
         tvBillTo = findViewById(R.id.textView58);
         tvPrice = findViewById(R.id.textView60);
-        tvBillNo = findViewById(R.id.textView67);
+        tvBillNo = findViewById(R.id.editTextTextPersonName9);
         btnok = findViewById(R.id.c_button20);
         /*btnShow = findViewById(R.id.show);
         btnEdit = findViewById(R.id.show2);*/
@@ -78,7 +78,7 @@ public class CcashDetails extends AppCompatActivity {
         String dateTO = intent3.getStringExtra("billdateTo");
         String price = intent3.getStringExtra("billfixprice");
         final String phone1 = intent3.getStringExtra("phone");
-        final String billNo = intent3.getStringExtra("billNo");
+        //final String billNo = intent3.getStringExtra("billNo");
 
 
         tvBillFrom.setText(dateFrom);
@@ -86,10 +86,10 @@ public class CcashDetails extends AppCompatActivity {
         tvPrice.setText(price);
         tvPhoneNo.setText(phone1);
         tvPhone.setText(phone1);
-        tvBillNo.setText(billNo);
+        //tvBillNo.setText(billNo);
 
 
-        reff.addValueEventListener(new ValueEventListener() {
+        /*reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -101,7 +101,7 @@ public class CcashDetails extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
         //add datepicker
         Calendar calendar = Calendar.getInstance();
@@ -358,12 +358,14 @@ public class CcashDetails extends AppCompatActivity {
         cash.setDate(etDate.getText().toString());
         cash.setTime(tvTime.getText().toString());
         cash.setPhoneNo(tvPhoneNo.getText().toString());
+        cash.setCashno(tvBillNo.getText().toString());
 
         String branchName = cash.getBranchName();
         String branchNo = cash.getBranchNo();
         String date = cash.getDate();
         String time = cash.getTime();
         String phone = cash.getPhoneNo();
+       String billNo = cash.getCashno();
 
         if (tvbranchName.length() == 0 || tvbranchNo.length() == 0 || tvTime.length() == 0 || etDate.length() == 0)
             Toast.makeText(CcashDetails.this, "Please enter all details", Toast.LENGTH_SHORT).show();
@@ -378,30 +380,32 @@ public class CcashDetails extends AppCompatActivity {
             Toast.makeText(CcashDetails.this, "Please enter Receipt date", Toast.LENGTH_SHORT).show();
         else if (TextUtils.isEmpty(tvTime.getText().toString()))
             Toast.makeText(CcashDetails.this, "Please enter Recepit time", Toast.LENGTH_SHORT).show();
+        else if(TextUtils.isEmpty(tvBillNo.getText().toString()))
+            Toast.makeText(this, "Please enter bill number", Toast.LENGTH_SHORT).show();
         else{
-            ValidatePhone(phone,branchName,branchNo,date,time,cbillNo);
+            ValidatePhone(phone,branchName,branchNo,date,time,billNo);
         }
 
 
 
     }
 
-    private void ValidatePhone(final String phone, final String branchName, final String branchNo, final String date, final String time, final long cbillNo) {
+    private void ValidatePhone(final String phone, final String branchName, final String branchNo, final String date, final String time, final String billNo) {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!snapshot.child("Cash").child(phone+date+time).exists()){
+                if(!snapshot.child("Cash").child(phone+billNo).exists()){
                     HashMap<String ,Object>cashMap = new HashMap<>();
                     cashMap.put("branchName",branchName);
                     cashMap.put("branchNo",branchNo);
-                    cashMap.put("cashNo",cbillNo+1);
+                    cashMap.put("cashNo",billNo);
                     cashMap.put("date",date);
                     cashMap.put("time",time);
                     cashMap.put("phoneNo",phone);
 
-                    RootRef.child("Cash").child(phone+date+time).updateChildren(cashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    RootRef.child("Cash").child(phone+billNo).updateChildren(cashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -413,10 +417,10 @@ public class CcashDetails extends AppCompatActivity {
                                 c.setBranchNo(branchNo);
                                 c.setDate(date);
                                 c.setTime(time);
-                                c.setCashno(String.valueOf(cbillNo));
+                                c.setCashno(billNo);
                                 c.setPhoneNo(phone);
 
-                                reff = FirebaseDatabase.getInstance().getReference().child("Cash").child(phone+date+time);
+                                reff = FirebaseDatabase.getInstance().getReference().child("Cash").child(phone+billNo);
                                 reff.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -471,6 +475,7 @@ public class CcashDetails extends AppCompatActivity {
         tvTime.setText("");
         tvbranchName.setText("");
         tvbranchNo.setText("");
+        tvBillNo.setText("");
     }
 
 

@@ -189,20 +189,6 @@
             app:layout_constraintVertical_bias="0.421" />
 
         <TextView
-            android:id="@+id/textView67"
-            android:layout_width="157dp"
-            android:layout_height="51dp"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.858"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.882" />
-
-        <TextView
             android:id="@+id/textView74"
             android:layout_width="163dp"
             android:layout_height="33dp"
@@ -299,33 +285,33 @@
 
         <EditText
             android:id="@+id/editTextTextPersonName4"
-            android:layout_width="167dp"
-            android:layout_height="60dp"
+            android:layout_width="114dp"
+            android:layout_height="57dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintHorizontal_bias="0.811"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.565" />
+            app:layout_constraintVertical_bias="0.574" />
 
         <EditText
             android:id="@+id/editTextTextPersonName8"
-            android:layout_width="171dp"
-            android:layout_height="46dp"
+            android:layout_width="122dp"
+            android:layout_height="40dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintHorizontal_bias="0.839"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.624" />
+            app:layout_constraintVertical_bias="0.62" />
 
         <Button
             android:id="@+id/button18"
@@ -391,6 +377,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.499" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName9"
+            android:layout_width="135dp"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.735"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.874" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

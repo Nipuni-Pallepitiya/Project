@@ -52,7 +52,7 @@ public class Ccreditcard2 extends AppCompatActivity {
         csave = findViewById(R.id.save);
         //show = findViewById(R.id.phone2);
         //edit = findViewById(R.id.phone2);
-        bfrom = findViewById(R.id.datef);
+        bfrom = findViewById(R.id.datet2);
         bto = findViewById(R.id.datet);
         dbRef = FirebaseDatabase.getInstance().getReference().child("CreditCard");
         name = findViewById(R.id.cname);

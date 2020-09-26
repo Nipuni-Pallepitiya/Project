@@ -106,8 +106,8 @@
 
         <Button
             android:id="@+id/btncredit"
-            android:layout_width="175dp"
-            android:layout_height="55dp"
+            android:layout_width="178dp"
+            android:layout_height="57dp"
             android:background="#1C96C6"
             android:onClick="creditCard"
             android:text="@string/c.Credit_card"
@@ -115,15 +115,15 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.767" />
 
         <Button
             android:id="@+id/c_button20"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
+            android:layout_width="184dp"
+            android:layout_height="57dp"
             android:background="#1C96C6"
             android:onClick="cash"
             android:text="@string/c.cash"
