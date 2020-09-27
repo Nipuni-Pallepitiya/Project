@@ -3,6 +3,7 @@ package com.example.finalone;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -32,7 +35,7 @@ public class Ccreditcard2 extends AppCompatActivity {
 
     TextView p1, p2, tota;
     DatePickerDialog.OnDateSetListener setListener;
-    Button ok,csave,show,edit, eDate, cshow, cdelete;
+    Button ok, csave, show, edit, eDate, cshow, cdelete;
     TextView bfrom, bto, bno, edate;
     DatabaseReference dbRef;
     CreditCard c;
@@ -120,7 +123,7 @@ public class Ccreditcard2 extends AppCompatActivity {
                 readRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.hasChildren()){
+                        if (snapshot.hasChildren()) {
                             no.setText(snapshot.child("cardNo").getValue().toString());
                             name.setText(snapshot.child("Name").getValue().toString());
                             edate.setText(snapshot.child("edate").getValue().toString());
@@ -143,7 +146,7 @@ public class Ccreditcard2 extends AppCompatActivity {
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.hasChild(phone1)){
+                        if (snapshot.hasChild(phone1)) {
                             dbRef = FirebaseDatabase.getInstance().getReference().child("CreditCard").child(phone1);
                             dbRef.removeValue();
 
@@ -151,7 +154,7 @@ public class Ccreditcard2 extends AppCompatActivity {
                             clearControls();
                             //startActivity(new Intent(Ccreditcard2.this,MRegister.class));
 
-                        }else{
+                        } else {
                             Toast.makeText(Ccreditcard2.this, "Can not delete", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -202,10 +205,11 @@ public class Ccreditcard2 extends AppCompatActivity {
 
                     }
                 });
-                }
+            }
 
         });
     }
+
     private void CreateAccount() {
         CreditCard card = new CreditCard();
         card.setName(name.getText().toString());
@@ -213,23 +217,82 @@ public class Ccreditcard2 extends AppCompatActivity {
         card.setEdate(edate.getText().toString());
         card.setPhoneNo(p1.getText().toString());
 
+
         String CName = card.getName();
         String CNo = card.getCardNo();
         String date = card.getEdate();
         String phone = card.getPhoneNo();
 
-        if (name.length() == 0 || no.length() == 0 || edate.length() == 0)
+        //boolean num = creditCardNoValidation(CNo);
+        //boolean nam = creditCardNameValidation(CName);
+        boolean date1 = isValidMonth(date);
+
+        if (name.length() == 0 || no.length() == 0 || edate.length() == 0) {
             Toast.makeText(Ccreditcard2.this, "Please enter all details", Toast.LENGTH_SHORT).show();
-        else if (TextUtils.isEmpty(name.getText().toString()))
-            Toast.makeText(Ccreditcard2.this, "Please enter Card owner's name", Toast.LENGTH_SHORT).show();
-        else if (!CNo.matches("[0-9]{16}"))
-            Toast.makeText(Ccreditcard2.this, "Please enter valid Credit card Number", Toast.LENGTH_SHORT).show();
-        else if (TextUtils.isEmpty(edate.getText().toString()))
-            Toast.makeText(Ccreditcard2.this, "Please enter Expiry date of the credit card", Toast.LENGTH_SHORT).show();
+        }
+        else if (creditCardNameValidation(CName) == false) {
+            Toast.makeText(this, "Enter the Card holder's name in letters", Toast.LENGTH_SHORT).show();
+        }
+        else if (creditCardNoValidation(CNo) == false) {
+            Toast.makeText(this, "Enter the credit card number in the correct format", Toast.LENGTH_SHORT).show();
+        }
+        else if (validCard(CNo) == false) {
+            Toast.makeText(this, "Credit card is invalid", Toast.LENGTH_SHORT).show();
+        }
         else {
             ValidatePhone(phone, CName, CNo, date);
         }
     }
+
+    @SuppressLint("SimpleDateFormat")
+    public boolean isValidMonth(String ccMonth) {
+        return ccMonth.compareTo(new SimpleDateFormat("dd/MM/yy").format(new Date())) >= 1;
+    }
+
+    public boolean validCard(String s2){
+        int[] ints = new int[s2.length()];
+        for (int i = 0; i < s2.length(); i++) {
+            ints[i] = Integer.parseInt(s2.substring(i, i + 1));
+        }
+        for (int i = ints.length - 2; i >= 0; i = i - 2) {
+            int j = ints[i];
+            j = j * 2;
+            if (j > 9) {
+                j = j % 10 + 1;
+            }
+            ints[i] = j;
+        }
+        int sum = 0;
+        for (int anInt : ints) {
+            sum += anInt;
+        }
+        if (sum % 10 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean creditCardNoValidation(String s2) {
+        if(s2.matches("[0-9]{10,16}")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean creditCardNameValidation(String s1) {
+        if (s1.matches("[A-Z, a-z]{5,20}")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
 
 
     private void ValidatePhone(final String phone, final String CName, final String CNo, final String date) {
