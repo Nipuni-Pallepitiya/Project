@@ -21,23 +21,25 @@ public class IT19005386 {
     @Before
     public void getValue()
     {
-        result=nsd.calculation(10.00,10.00);
+
+        result=0.00;
     }
     @Test(timeout = 1)
-    public void amountleft()
-    {
-
-        assertEquals(9.990234375,result);
+    public void amountleft() {
+        result = nsd.calculation(10, 10);
+        assertEquals(9.99,result,0.1);
 
     }
     @After
     public void cleardata()
     {
+
         result=0;
     }
     @AfterClass
     public static void deleteObj()
     {
+
         nsd=null;
     }
 }
