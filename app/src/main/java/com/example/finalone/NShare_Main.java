@@ -3,6 +3,7 @@ package com.example.finalone;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -84,6 +87,27 @@ public class NShare_Main extends AppCompatActivity {
         txtAmt=findViewById(R.id.NAmtData);
         txtDate=findViewById(R.id.NDate);
 
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        txtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        NShare_Main.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        month = month + 1;
+                        String date = day + "/" + month + "/" + year;
+                        txtDate.setText(date);
+                    }
+                }, year, month, day);
+                datePickerDialog.show();
+            }
+        });
+
 
         btnshared.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +115,8 @@ public class NShare_Main extends AppCompatActivity {
                 CreateShareData();
             }
         });
+
+
 
 
         /*btnshared.setOnClickListener(new View.OnClickListener() {
@@ -268,8 +294,8 @@ public class NShare_Main extends AppCompatActivity {
                             else {
                                 if (txtPhnTo.getText().toString().equals(txtPhnFrom.getText().toString()))
                                     Toast.makeText(getApplicationContext(), "Cant do transaction", Toast.LENGTH_SHORT).show();
-                                else if (!isValiddate(txtDate.getText().toString()))
-                                    Toast.makeText(getApplicationContext(), "Date invalid", Toast.LENGTH_SHORT).show();
+                               /* else if (!isValiddate(txtDate.getText().toString()))
+                                    Toast.makeText(getApplicationContext(), "Date invalid", Toast.LENGTH_SHORT).show();*/
                                 else
                                     Validatephnone(id, phnto, phnFrom, amt, date,phnFromto);
                             }
@@ -361,7 +387,7 @@ public class NShare_Main extends AppCompatActivity {
         });
     }
 
-    public boolean isValiddate(String date) {
+   /* public boolean isValiddate(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date testdate = null;
         try {
@@ -377,5 +403,5 @@ public class NShare_Main extends AppCompatActivity {
             return false;
         }
         return true;
-    }
+    }*/
 }

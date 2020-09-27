@@ -3,10 +3,12 @@ package com.example.finalone;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Calendar;
 
 public class NShareDisplay extends AppCompatActivity {
 
@@ -53,6 +57,8 @@ public class NShareDisplay extends AppCompatActivity {
         txtphn=findViewById(R.id.ntextView3);
         txtamtleft=findViewById(R.id.nAmtR);
         //e=findViewById(R.id.edmain);
+
+
         dbRef= FirebaseDatabase.getInstance().getReference().child("ShareData");
         dbRef3=FirebaseDatabase.getInstance().getReference().child("FixData");
         DatabaseReference readRef2= FirebaseDatabase.getInstance().getReference().child("FixData").child(message);
@@ -100,7 +106,10 @@ public class NShareDisplay extends AppCompatActivity {
                     txtDate.setText(dataSnapshot.child("date").getValue().toString());
                     amtgave=dataSnapshot.child("amt").getValue().toString();
                     amtgv=Double.parseDouble(amtgave);
-                    amtl=((amth*1024)-amtgv)/1024;
+                    /*amtl=((amth*1024)-amtgv)/1024;
+                    txtamtleft.setText(amtl.toString());*/
+
+                    amtl=calculation(amth,amtgv);
                     txtamtleft.setText(amtl.toString());
 
 
@@ -176,6 +185,15 @@ public class NShareDisplay extends AppCompatActivity {
 
         NDialog ex=new NDialog();
         ex.show(getSupportFragmentManager(),"example dialog");
+
+    }
+
+    public double calculation(double amth,double amtgv)
+    {
+        double result;
+        result=amtl=((amth*1024)-amtgv)/1024;
+
+        return result;
 
     }
 
