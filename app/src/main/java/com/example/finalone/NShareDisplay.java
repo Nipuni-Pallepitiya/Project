@@ -191,7 +191,7 @@ public class NShareDisplay extends AppCompatActivity {
     public double calculation(double amth,double amtgv)
     {
         double result;
-        result=amtl=((amth*1024)-amtgv)/1024;
+        result=((amth*1024)-amtgv)/1024;
 
         return result;
 
