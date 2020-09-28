@@ -199,5 +199,34 @@ public class MRegister extends AppCompatActivity {
 
 
     }*/
+    public boolean isValidatePhone(String phone){
+        /*if(!phone.isEmpty())
+            return true;*/
+         if(phone.matches("[0-9]{10}"))
+            return true;
+        else
+            return false;
+    }
+
+    public boolean isValidatePassword(String password){
+        if(password.length()>6){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public boolean isValidateConfirm(String password ,String confirm){
+        if(password.equals(confirm))
+            return true;
+        else
+            return false;
+
+    }
+
+
+
+
+
 
 }

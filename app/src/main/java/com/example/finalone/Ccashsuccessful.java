@@ -170,14 +170,14 @@ public class Ccashsuccessful extends AppCompatActivity {
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!snapshot.child("CashPayment").child(cPhone+cDate).exists()){
+                if(!snapshot.child("CashPayment").child(cBillNo).exists()){
                     HashMap<String ,Object> cashPaymentMap = new HashMap<>();
                     cashPaymentMap.put("cBillNo",cBillNo);
                     cashPaymentMap.put("pBillNo",pbillNo+1);
                     cashPaymentMap.put("phone",cPhone);
                     cashPaymentMap.put("date",cDate);
 
-                    rootRef.child("CashPayment").child(cPhone+cDate).updateChildren(cashPaymentMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    rootRef.child("CashPayment").child(cBillNo).updateChildren(cashPaymentMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){

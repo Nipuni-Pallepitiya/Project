@@ -396,7 +396,7 @@ public class CcashDetails extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!snapshot.child("Cash").child(phone+billNo).exists()){
+                if(!snapshot.child("Cash").child(billNo).exists()){
                     HashMap<String ,Object>cashMap = new HashMap<>();
                     cashMap.put("branchName",branchName);
                     cashMap.put("branchNo",branchNo);
@@ -405,7 +405,7 @@ public class CcashDetails extends AppCompatActivity {
                     cashMap.put("time",time);
                     cashMap.put("phoneNo",phone);
 
-                    RootRef.child("Cash").child(phone+billNo).updateChildren(cashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    RootRef.child("Cash").child(billNo).updateChildren(cashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -420,7 +420,7 @@ public class CcashDetails extends AppCompatActivity {
                                 c.setCashno(billNo);
                                 c.setPhoneNo(phone);
 
-                                reff = FirebaseDatabase.getInstance().getReference().child("Cash").child(phone+billNo);
+                                reff = FirebaseDatabase.getInstance().getReference().child("Cash").child(billNo);
                                 reff.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
