@@ -37,5 +37,4 @@ public class IT19152042 {
     public static void clearAll(){
         datapackdetail = null;
     }
-
 }

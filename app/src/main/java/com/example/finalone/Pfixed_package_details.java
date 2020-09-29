@@ -58,7 +58,7 @@ public class Pfixed_package_details extends AppCompatActivity {
         String sms= i1.getStringExtra("sms");
         String validity= i1.getStringExtra("val");
         String price= i1.getStringExtra("price");
-        final Integer billno =1;
+        final Integer billno =0;
 
         final String phone = i1.getStringExtra("phone");
 
