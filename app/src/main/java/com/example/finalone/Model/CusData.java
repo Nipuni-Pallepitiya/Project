@@ -8,7 +8,7 @@ public class CusData {
     private String dataid;
     private String phone;
     private String datadatefrom;
-    private String datavalidity;
+    private String datadateto;
     private String dataprice;
     private String dataname;
 
@@ -43,12 +43,12 @@ public class CusData {
         this.datadatefrom = datadatefrom;
     }
 
-    public String getDatavalidity() {
-        return datavalidity;
+    public String getDatadateto() {
+        return datadateto;
     }
 
-    public void setDatavalidity(String datavalidity) {
-        this.datavalidity = datavalidity;
+    public void setDatadateto(String datadateto) {
+        this.datadateto = datadateto;
     }
 
     public String getDataprice() {

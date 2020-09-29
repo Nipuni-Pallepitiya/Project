@@ -1,8 +1,10 @@
 package com.example.finalone;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,7 @@ public class Pfixed_package_details extends AppCompatActivity {
     DatabaseReference dbRef1,dbRef2;
     FixData f1 = new FixData();
     Bill b1 = new Bill();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +64,8 @@ public class Pfixed_package_details extends AppCompatActivity {
 
         tvId.setText(id);
         tvName.setText(name);
-        tvAny.setText(any);
-        tvNight.setText(night);
+        tvAny.setText(any+" GB");
+        tvNight.setText(night + " GB");
         tvVoice.setText(voice);
         tvSms.setText(sms);
         tvValidity.setText(validity);
@@ -73,175 +76,136 @@ public class Pfixed_package_details extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbRef1= FirebaseDatabase.getInstance().getReference().child("FixData");
-                dbRef2= FirebaseDatabase.getInstance().getReference().child("Bill");
+                AlertDialog.Builder builder = new AlertDialog.Builder(Pfixed_package_details.this);
+                builder.setMessage("Do you really want to activate this package?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
-                DatabaseReference readRef1 = FirebaseDatabase.getInstance().getReference().child("FixData");
-                readRef1.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.child(phone).exists()) {
-                            Toast.makeText(getApplicationContext(), "Package Already Activated", Toast.LENGTH_SHORT).show();
-                        }
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dbRef1 = FirebaseDatabase.getInstance().getReference().child("FixData");
+                                dbRef2 = FirebaseDatabase.getInstance().getReference().child("Bill");
 
-                        else if(id == "1") {
+                                DatabaseReference readRef1 = FirebaseDatabase.getInstance().getReference().child("FixData");
+                                readRef1.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                                        if (dataSnapshot.child(phone).exists()) {
+                                            Toast.makeText(getApplicationContext(), "Package Already Activated", Toast.LENGTH_SHORT).show();
+                                        } else if (id == "1") {
 
-                            f1.setFixname(tvName.getText().toString().trim());
-                            f1.setFixprice(tvPrice.getText().toString().trim());
-                            f1.setFixdatefrom(f1.getFixdatefrom());
-                            f1.setFixdateto(f1.getFixdateto());
-                            f1.setFixdata(tvAny.getText().toString().trim());
-                            dbRef1.child(phone).setValue(f1);
+                                            f1.setFixname(tvName.getText().toString().trim());
+                                            f1.setFixprice(tvPrice.getText().toString().trim());
+                                            f1.setFixdatefrom(f1.getFixdatefrom());
+                                            f1.setFixdateto(f1.getFixdateto());
+                                            f1.setFixdata(tvAny.getText().toString().trim());
+                                            dbRef1.child(phone).setValue(f1);
 
-                            Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
-                        }
-                        else if(id == "2"){
+                                            Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
+                                        } else if (id == "2") {
 
-                            f1.setFixname(tvName.getText().toString().trim());
-                            f1.setFixprice(tvPrice.getText().toString().trim());
-                            f1.setFixdatefrom(f1.getFixdatefrom());
-                            f1.setFixdateto(f1.getFixdateto());
-                            f1.setFixdata(tvAny.getText().toString().trim());
-                            dbRef1.child(phone).setValue(f1);
+                                            f1.setFixname(tvName.getText().toString().trim());
+                                            f1.setFixprice(tvPrice.getText().toString().trim());
+                                            f1.setFixdatefrom(f1.getFixdatefrom());
+                                            f1.setFixdateto(f1.getFixdateto());
+                                            f1.setFixdata(tvAny.getText().toString().trim());
+                                            dbRef1.child(phone).setValue(f1);
 
-                            Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
-                        }
-                        else if(id == "3"){
+                                            Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
+                                        } else if (id == "3") {
 
-                            f1.setFixname(tvName.getText().toString().trim());
-                            f1.setFixprice(tvPrice.getText().toString().trim());
-                            f1.setFixdatefrom(f1.getFixdatefrom());
-                            f1.setFixdateto(f1.getFixdateto());
-                            f1.setFixdata(tvAny.getText().toString().trim());
-                            dbRef1.child(phone).setValue(f1);
+                                            f1.setFixname(tvName.getText().toString().trim());
+                                            f1.setFixprice(tvPrice.getText().toString().trim());
+                                            f1.setFixdatefrom(f1.getFixdatefrom());
+                                            f1.setFixdateto(f1.getFixdateto());
+                                            f1.setFixdata(tvAny.getText().toString().trim());
+                                            dbRef1.child(phone).setValue(f1);
 
-                            Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else{
-                            f1.setFixname(tvName.getText().toString().trim());
-                            f1.setFixprice(tvPrice.getText().toString().trim());
-                            f1.setFixdatefrom(f1.getFixdatefrom());
-                            f1.setFixdateto(f1.getFixdateto());
-                            f1.setFixdata(tvAny.getText().toString().trim());
-                            dbRef1.child(phone).setValue(f1);
-                            Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                                        } else {
+                                            f1.setFixname(tvName.getText().toString().trim());
+                                            f1.setFixprice(tvPrice.getText().toString().trim());
+                                            f1.setFixdatefrom(f1.getFixdatefrom());
+                                            f1.setFixdateto(f1.getFixdateto());
+                                            f1.setFixdata(tvAny.getText().toString().trim());
+                                            dbRef1.child(phone).setValue(f1);
+                                            Toast.makeText(getApplicationContext(), "Package Activated", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Bill Added", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
+                                    }
 
 
-                });
+                                });
 
-                DatabaseReference readRef2 = FirebaseDatabase.getInstance().getReference().child("Bill");
-                readRef2.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.child(phone).exists()) {
-                            Toast.makeText(getApplicationContext(), "Bill already added", Toast.LENGTH_SHORT).show();
-                        }
-                        else if(dataSnapshot.hasChildren()){
-                            if (id == "1") {
-                                b1.setBillno(String.valueOf(billno + 1));
-                                b1.setBilldatefrom(b1.getBilldatefrom());
-                                b1.setBilldateto(b1.getBilldateto());
+                                DatabaseReference readRef2 = FirebaseDatabase.getInstance().getReference().child("Bill");
+                                readRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if (dataSnapshot.child(phone).exists()) {
+                                            Toast.makeText(getApplicationContext(), "Bill already added", Toast.LENGTH_SHORT).show();
+                                        } else
+                                            switch (id) {
+                                                case "1": {
+                                                    b1.setBillno(String.valueOf(billno + 1));
+                                                    b1.setBilldatefrom(b1.getBilldatefrom());
+                                                    b1.setBilldateto(b1.getBilldateto());
+                                                    b1.setBillfixprice(tvPrice.getText().toString().trim());
+                                                    dbRef2.child(phone).setValue(b1);
+                                                }
+                                                case "2": {
+                                                    b1.setBillno(String.valueOf(billno + 1));
+                                                    b1.setBilldatefrom(b1.getBilldatefrom());
+                                                    b1.setBilldateto(b1.getBilldateto());
+                                                    b1.setBillfixprice(tvPrice.getText().toString().trim());
 
-                                b1.setBillfixprice(tvPrice.getText().toString().trim());
-                                dbRef2.child(phone).setValue(b1);
+                                                    dbRef2.child(phone).setValue(b1);
+                                                }
+                                                case "3": {
+                                                    b1.setBillno(String.valueOf(billno + 1));
+                                                    b1.setBilldatefrom(b1.getBilldatefrom());
+                                                    b1.setBilldateto(b1.getBilldateto());
+                                                    b1.setBillfixprice(tvPrice.getText().toString().trim());
 
-                            } else if (id == "2") {
-                                b1.setBillno(String.valueOf(billno + 1));
-                                b1.setBilldatefrom(b1.getBilldatefrom());
-                                b1.setBilldateto(b1.getBilldateto());
+                                                    dbRef2.child(phone).setValue(b1);
 
-                                b1.setBillfixprice(tvPrice.getText().toString().trim());
+                                                }
+                                                case "4": {
+                                                    b1.setBillno(String.valueOf(billno + 1));
+                                                    b1.setBilldatefrom(b1.getBilldatefrom());
+                                                    b1.setBilldateto(b1.getBilldateto());
+                                                    b1.setBillfixprice(tvPrice.getText().toString().trim());
 
-                                dbRef2.child(phone).setValue(b1);
+                                                    dbRef2.child(phone).setValue(b1);
 
-                            } else if (id == "3") {
-                                b1.setBillno(String.valueOf(billno + 1));
-                                b1.setBilldatefrom(b1.getBilldatefrom());
-                                b1.setBilldateto(b1.getBilldateto());
+                                                }
+                                            }
+                                    }
 
-                                b1.setBillfixprice(tvPrice.getText().toString().trim());
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                dbRef2.child(phone).setValue(b1);
-
-                            } else {
-                                b1.setBillno(String.valueOf(billno + 1));
-                                b1.setBilldatefrom(b1.getBilldatefrom());
-                                b1.setBilldateto(b1.getBilldateto());
-
-                                b1.setBillfixprice(tvPrice.getText().toString().trim());
-
-                                dbRef2.child(phone).setValue(b1);
+                                    }
+                                });
 
                             }
-                        } else {
 
-                            if (id == "1") {
+                     }).setNegativeButton("No", null);
 
-                                b1.setBillno(String.valueOf(billno));
-                                b1.setBilldatefrom(b1.getBilldatefrom());
-                                b1.setBilldateto(b1.getBilldateto());
+                              AlertDialog alert = builder.create();
+                              alert.show();
 
-                                b1.setBillfixprice(tvPrice.getText().toString().trim());
-
-                                dbRef2.child(phone).setValue(b1);
+            }
 
 
-                            } else if (id == "2") {
-                                b1.setBillno(String.valueOf(billno));
-                                b1.setBilldatefrom(b1.getBilldatefrom());
-                                b1.setBilldateto(b1.getBilldateto());
-
-                                b1.setBillfixprice(tvPrice.getText().toString().trim());
-
-                                dbRef2.child(phone).setValue(b1);
-
-
-                            } else if (id == "3") {
-                                b1.setBillno(String.valueOf(billno));
-                                b1.setBilldatefrom(b1.getBilldatefrom());
-                                b1.setBilldateto(b1.getBilldateto());
-
-                                b1.setBillfixprice(tvPrice.getText().toString().trim());
-
-                                dbRef2.child(phone).setValue(b1);
-
-
-                            } else {
-                                b1.setBillno(String.valueOf(billno));
-                                b1.setBilldatefrom(b1.getBilldatefrom());
-                                b1.setBilldateto(b1.getBilldateto());
-
-                                b1.setBillfixprice(tvPrice.getText().toString().trim());
-
-                                dbRef2.child(phone).setValue(b1);
-                            }
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-        }
-
-
-    });
+         });
     }
 }
 
