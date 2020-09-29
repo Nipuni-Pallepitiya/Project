@@ -135,5 +135,8 @@
     <string name="time">Time</string>
     <string name="current">Date</string>
     <string name="Namtleftnew">AmountLeft(In GB)</string>
+    <string name="P_Any_time">ANY TIME GB</string>
+    <string name="p_AnytimeGB">ANY TIME GB</string>
+    <string name="p_Night_GB">NIGHT TIME GB</string>
 
 </resources>

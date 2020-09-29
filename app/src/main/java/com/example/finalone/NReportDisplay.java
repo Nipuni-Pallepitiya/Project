@@ -29,11 +29,11 @@ public class NReportDisplay extends AppCompatActivity {
         tv.setText(message);
     }
 
-    public void NBackClick(View v)
+    /*public void NBackClick(View v)
     {
         Intent intent=new Intent(this,NShare_Data.class);
         Button btn1=(Button)findViewById(R.id.Nback);
         startActivity(intent);
 
-    }
+    }*/
 }

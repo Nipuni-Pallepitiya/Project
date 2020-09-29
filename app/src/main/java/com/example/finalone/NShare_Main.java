@@ -38,12 +38,15 @@ public class NShare_Main extends AppCompatActivity {
     Button btnshared;
     EditText txtPhnTo,txtAmt,txtDate;
     TextView txtPhnFrom;
-    DatabaseReference dbRef;
+    DatabaseReference dbRef,dbRef3;
     ShareData std;
     TextView tv,tvphnfrom;
     long maxid=0;
     public static final String EXTRAMESSAGE="message";
     public static final String EXTRAMESSAGE2="message2";
+    String phonenumer;
+    String amthve;
+    Double amth,amtg;
 
   /* // public static final String EXTRA_MESSAGE = "com.example.finalone.MESSAGE";
     public static final String EXTRA_MESSAGE2 = "com.example.finalone.MESSAGE2";
@@ -65,20 +68,13 @@ public class NShare_Main extends AppCompatActivity {
         setContentView(R.layout.activity_n_share__main);
         final Intent intent = getIntent();
         final String phone = intent.getStringExtra("EXTRA_MESSAGE");
+        phonenumer=intent.getStringExtra("EXTRA_MESSAGE");
         tv = findViewById(R.id.NtextView17);
         txtPhnFrom=findViewById(R.id.nPhnFrom);
         txtPhnFrom.setText(phone);
         tv.setText(phone);
 
-       /* btn=findViewById(R.id.nbutton3);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(NShare_Main.this, NShareDisplay.class);
-                startActivity(intent);
 
-            }
-        });*/
         std=new ShareData();
 
         btnshared=findViewById(R.id.nbutton3);
@@ -386,6 +382,11 @@ public class NShare_Main extends AppCompatActivity {
             }
         });
     }
+
+
+   
+
+
 
    /* public boolean isValiddate(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

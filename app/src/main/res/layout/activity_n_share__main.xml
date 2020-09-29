@@ -212,21 +212,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.603" />
 
-    <Button
-        android:id="@+id/NBackMain"
-        android:layout_width="@dimen/ndefault_backbtn_width"
-        android:layout_height="@dimen/ndefault_bcakbtn_height"
-        android:backgroundTint="@color/ic_launcher_background"
-        android:onClick="NBackClick"
-        android:text="@string/NBack"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
-
     <TextView
         android:id="@+id/nPhnFrom"
         android:layout_width="131dp"

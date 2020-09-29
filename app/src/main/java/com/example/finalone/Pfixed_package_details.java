@@ -64,8 +64,8 @@ public class Pfixed_package_details extends AppCompatActivity {
 
         tvId.setText(id);
         tvName.setText(name);
-        tvAny.setText(any+" GB");
-        tvNight.setText(night + " GB");
+        tvAny.setText(any);
+        tvNight.setText(night);
         tvVoice.setText(voice);
         tvSms.setText(sms);
         tvValidity.setText(validity);
