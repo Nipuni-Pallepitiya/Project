@@ -90,7 +90,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.child(phone).exists()) {
-                                            Toast.makeText(getApplicationContext(), "Package Already Activated", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "A fixed package is already activated", Toast.LENGTH_SHORT).show();
                                         } else if (id == "1") {
 
                                             f1.setFixname(tvName.getText().toString().trim());
@@ -150,7 +150,7 @@ public class Pfixed_package_details extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.child(phone).exists()) {
-                                            Toast.makeText(getApplicationContext(), "Bill already added", Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(getApplicationContext(), "Bill already added", Toast.LENGTH_SHORT).show();
                                         } else
                                             switch (id) {
                                                 case "1": {

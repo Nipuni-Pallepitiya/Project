@@ -53,9 +53,10 @@ public class PAdd_Data extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i2 = new Intent(getBaseContext(), Pdata_packages.class);
+                checkfix();
+                /* i2 = new Intent(getBaseContext(), Pdata_packages.class);
                 i2.putExtra("phone", phone);
-                startActivity(i2);
+                startActivity(i2);*/
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -95,5 +96,29 @@ public class PAdd_Data extends AppCompatActivity {
 
         });
 
+    }
+
+    public void checkfix() {
+
+        DatabaseReference readRef1 = FirebaseDatabase.getInstance().getReference().child("FixData").child(phoneno.getText().toString());
+        readRef1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()){
+                    String contact=phoneno.getText().toString();
+                    Intent i2 = new Intent(getBaseContext(), Pdata_packages.class);
+                    i2.putExtra("phone", contact);
+                    startActivity(i2);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"No activated fix package",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
