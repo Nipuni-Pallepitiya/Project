@@ -111,7 +111,7 @@ public class PAdd_Data extends AppCompatActivity {
                     startActivity(i2);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"No activated fix package",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"No activated fixed package",Toast.LENGTH_SHORT).show();
                 }
             }
 
