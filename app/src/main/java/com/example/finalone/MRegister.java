@@ -77,8 +77,9 @@ public class MRegister extends AppCompatActivity {
         String phone = cus.getPhoneNo();
         String email = cus.getEmail();
         String password = cus.getPassword();
-
-        if(TextUtils.isEmpty(name)){
+        if(FullName.length()==0 || phone.length()==0 || email.length()==0 || password.length()==0 || re_enter.length()==0)
+            Toast.makeText(this, "Please enter all details", Toast.LENGTH_SHORT).show();
+       else if(TextUtils.isEmpty(name)){
             Toast.makeText(this, "Please enter Full name", Toast.LENGTH_SHORT).show();
         }
         else if(TextUtils.isEmpty(phone)){

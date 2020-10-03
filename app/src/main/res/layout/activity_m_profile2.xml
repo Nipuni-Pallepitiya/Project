@@ -7,6 +7,14 @@
     tools:context=".MProfile2">
 
     <View
+        android:id="@+id/view16"
+        android:layout_width="417dp"
+        android:layout_height="731dp"
+        android:background="#112645"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <View
         android:id="@+id/view31"
         android:layout_width="420dp"
         android:layout_height="52dp"
@@ -37,21 +45,11 @@
         android:onClick="editDetails"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
-
-    <View
-        android:id="@+id/view16"
-        android:layout_width="411dp"
-        android:layout_height="681dp"
-        android:background="#112645"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button23"

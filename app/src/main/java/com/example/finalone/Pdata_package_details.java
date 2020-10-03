@@ -30,7 +30,7 @@ public class Pdata_package_details extends AppCompatActivity {
 
     TextView tvId, tvName, tvAny, tvNight, tvValidity, tvPrice, tvPhone;
     Button btn1;
-    ImageButton img;
+    ImageButton imageButton;
     DatabaseReference dbRef1, dbRef2,dbRef3;
     CusData c = new CusData();
     Bill b1 = new Bill();
@@ -49,7 +49,7 @@ public class Pdata_package_details extends AppCompatActivity {
         dprice=0;
 
         btn1 = findViewById(R.id.pbtnActivateDataPack);
-        img = findViewById(R.id.pimageButton5);
+        imageButton = findViewById(R.id.pimageButton5);
         tvId = findViewById(R.id.ptvDataId);
         tvName = findViewById(R.id.ptvDataName);
         tvAny = findViewById(R.id.ptvDataAny);
@@ -166,6 +166,7 @@ public class Pdata_package_details extends AppCompatActivity {
             }
 
         });
+
 
     }
 

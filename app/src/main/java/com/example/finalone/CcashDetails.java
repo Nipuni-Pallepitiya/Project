@@ -7,15 +7,14 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -45,6 +44,7 @@ public class CcashDetails extends AppCompatActivity {
     DatabaseReference reff;
     Cash cash;
     EditText tvbranchName,tvbranchNo;
+    ImageButton imageButton;
    // long cbillNo=0;
 
     @Override
@@ -102,6 +102,36 @@ public class CcashDetails extends AppCompatActivity {
 
             }
         });*/
+        imageButton = findViewById(R.id.imageButton9);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Customer").child(phone1);
+                readRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.hasChildren()){
+                            String cusName =  (snapshot.child("name").getValue().toString());
+                            String cusPhone = (snapshot.child("phoneNo").getValue().toString());
+                            String cusEmail = (snapshot.child("email").getValue().toString());
+
+                            Intent intent2 = new Intent(getBaseContext(),MProfile.class);
+                            intent2.putExtra("name",cusName);
+                            intent2.putExtra("phoneNo",cusPhone);
+                            intent2.putExtra("email",cusEmail);
+                            startActivity(intent2);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
 
         //add datepicker
         Calendar calendar = Calendar.getInstance();

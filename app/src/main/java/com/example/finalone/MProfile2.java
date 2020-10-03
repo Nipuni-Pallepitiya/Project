@@ -17,9 +17,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MProfile2 extends AppCompatActivity {
-    TextView phoneNo,nameTextView,phoneTextView,emailTextView;
+    TextView phoneNo,nameTextView,phoneTextView,emailTextView,passwordTextView;
     Button btnDelete,btnLogout;
     DatabaseReference dbRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class MProfile2 extends AppCompatActivity {
         emailTextView = findViewById(R.id.textView120);
         btnDelete = findViewById(R.id.button21);
         btnLogout = findViewById(R.id.button22);
+       // passwordTextView = findViewById(R.id.editTextTextPassword4);
         dbRef = FirebaseDatabase.getInstance().getReference().child("Customer");
 
         Intent intent2 = getIntent();

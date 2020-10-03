@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MBill extends AppCompatActivity {
     TextView tv,dateToBill,dateFromBill,priceBill,phoneno;
     Button btnCredit;
+    ImageButton imageButton;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -30,7 +31,7 @@ public class MBill extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_m_bill);
 
-
+        imageButton = findViewById(R.id.imageButton3);
         dateFromBill = findViewById(R.id.textView17);
         priceBill = findViewById(R.id.textView14);
         dateToBill = findViewById(R.id.textView30);
@@ -53,6 +54,34 @@ public class MBill extends AppCompatActivity {
         dateToBill.setText(dateTO);
         priceBill.setText(price);
         phoneno.setText(phone1);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Customer").child(phone1);
+                readRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.hasChildren()){
+                            String cusName =  (snapshot.child("name").getValue().toString());
+                            String cusPhone = (snapshot.child("phoneNo").getValue().toString());
+                            String cusEmail = (snapshot.child("email").getValue().toString());
+
+                            Intent intent2 = new Intent(getBaseContext(),MProfile.class);
+                            intent2.putExtra("name",cusName);
+                            intent2.putExtra("phoneNo",cusPhone);
+                            intent2.putExtra("email",cusEmail);
+                            startActivity(intent2);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
 
 
         //pass values
@@ -102,12 +131,12 @@ public class MBill extends AppCompatActivity {
 
     }
     //redirect to the my profile page
-    public void displayProfile(View view){
+    /*public void displayProfile(View view){
         Intent intent = new Intent(this,MProfile.class);
         ImageButton FullName = (ImageButton) findViewById(R.id.imageButton3);
         startActivity(intent);
 
-    }
+    }*/
     //redirect to the Credit card page
    /* public  void MPayButton(View view){
         Toast.makeText(MBill.this, "Processing", Toast.LENGTH_SHORT).show();

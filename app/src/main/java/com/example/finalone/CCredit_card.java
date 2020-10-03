@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.finalone.Model.CreditCard;
@@ -19,13 +20,14 @@ import com.google.firebase.database.ValueEventListener;
 public class CCredit_card extends AppCompatActivity {
     TextView tvPhone,tvDateFrom,tvDateTo,tvPrice;
     Button btnCash, credit;
+    ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c_credit_card);
 
-
+        imageButton = findViewById(R.id.imageButton2);
         tvDateFrom= findViewById(R.id.textView19);
         tvDateTo = findViewById(R.id.textView35);
         tvPrice = findViewById(R.id.textView109);
@@ -46,6 +48,34 @@ public class CCredit_card extends AppCompatActivity {
         tvDateTo.setText(dateTO);
         tvPrice.setText(price);
         tvPhone.setText(phone);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Customer").child(phone);
+                readRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.hasChildren()){
+                            String cusName =  (snapshot.child("name").getValue().toString());
+                            String cusPhone = (snapshot.child("phoneNo").getValue().toString());
+                            String cusEmail = (snapshot.child("email").getValue().toString());
+
+                            Intent intent2 = new Intent(getBaseContext(),MProfile.class);
+                            intent2.putExtra("name",cusName);
+                            intent2.putExtra("phoneNo",cusPhone);
+                            intent2.putExtra("email",cusEmail);
+                            startActivity(intent2);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
 
         btnCash.setOnClickListener(new View.OnClickListener() {
             @Override

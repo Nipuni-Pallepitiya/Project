@@ -21,7 +21,7 @@ public class PAdd_Data extends AppCompatActivity {
 
     TextView phoneno;
     Button btn1,btn2,btn3;
-    ImageButton img;
+    ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class PAdd_Data extends AppCompatActivity {
         btn1 = findViewById(R.id.pbtnAddPackage);
         btn2 = findViewById(R.id.pbtnAddData);
         btn3 = findViewById(R.id.pbtnViewMyPacks);
-        img = findViewById(R.id.pimageButton1);
+        imageButton = findViewById(R.id.pimageButton1);
 
         Intent i1 = getIntent();
         final String phone = i1.getStringExtra("phone");
@@ -48,6 +48,7 @@ public class PAdd_Data extends AppCompatActivity {
 
             }
         });
+
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override

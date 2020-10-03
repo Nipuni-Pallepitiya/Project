@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class Ccashsuccessful extends AppCompatActivity {
     DatabaseReference reff;
     long pbillNo=0;
     CashPayment cashPayment;
+    ImageButton imageButton;
 
 
 
@@ -90,6 +92,37 @@ public class Ccashsuccessful extends AppCompatActivity {
         tvAmount.setText(amount);
         tvPaidDate.setText(date);
         tvBillNo.setText(billNo);
+
+        imageButton = findViewById(R.id.imageButton13);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Customer").child(phoneNo);
+                readRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.hasChildren()){
+                            String cusName =  (snapshot.child("name").getValue().toString());
+                            String cusPhone = (snapshot.child("phoneNo").getValue().toString());
+                            String cusEmail = (snapshot.child("email").getValue().toString());
+
+                            Intent intent2 = new Intent(getBaseContext(),MProfile.class);
+                            intent2.putExtra("name",cusName);
+                            intent2.putExtra("phoneNo",cusPhone);
+                            intent2.putExtra("email",cusEmail);
+                            startActivity(intent2);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
 
 
 

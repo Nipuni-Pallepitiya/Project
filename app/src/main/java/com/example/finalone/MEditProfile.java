@@ -21,10 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MEditProfile extends AppCompatActivity {
-    private EditText nameTextView,phoneTextView,emailTextView;
+    private EditText nameTextView,emailTextView,passwordTextView;
 
 
-    TextView phone;
+    TextView phone,phoneTextView;
     Button btnShow;
     Button update;
     ImageButton imageButton1;
@@ -39,11 +39,12 @@ public class MEditProfile extends AppCompatActivity {
 
         phone = findViewById(R.id.textView32);
         nameTextView = findViewById(R.id.editTextTextPersonName5);
-        phoneTextView = findViewById(R.id.editTextTextPersonName7);
+        phoneTextView = findViewById(R.id.textView42);
         emailTextView = findViewById(R.id.editTextTextPersonName22);
         btnShow = findViewById(R.id.button13);
         update = findViewById(R.id.button14);
         imageButton1 =  findViewById(R.id.imageButton5);
+        passwordTextView = findViewById(R.id.editTextTextPassword4);
 
         cus = new Customer();
 
@@ -65,6 +66,7 @@ public class MEditProfile extends AppCompatActivity {
                            phoneTextView.setText(snapshot.child("phoneNo").getValue().toString());
                             emailTextView.setText(snapshot.child("email").getValue().toString());
                             phone.setText(snapshot.child("phoneNo").getValue().toString());
+                            passwordTextView.setText(snapshot.child("password").getValue().toString());
 
 
                         }
@@ -87,56 +89,64 @@ public class MEditProfile extends AppCompatActivity {
                 readRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.hasChild(phone1)) {
 
-                             if (!Patterns.EMAIL_ADDRESS.matcher(emailTextView.getText().toString()).matches())
-                                Toast.makeText(MEditProfile.this, "Please enter valid email address", Toast.LENGTH_SHORT).show();
-                            else {
-                                cus.setName(nameTextView.getText().toString().trim());
-                                cus.setPhoneNo(phoneTextView.getText().toString().trim());
-                                cus.setEmail(emailTextView.getText().toString().trim());
-                                cus.setPhoneNo(phone.getText().toString().trim());
+                            if (snapshot.hasChild(phone1)) {
+                                if (nameTextView.length() == 0 || emailTextView.length() == 0 || passwordTextView.length() == 0)
+                                    Toast.makeText(MEditProfile.this, "Please click show details", Toast.LENGTH_SHORT).show();
 
-                                DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Customer").child(phone1);
-                                dbRef.setValue(cus);
-                                clearControls();
+                                else if (!Patterns.EMAIL_ADDRESS.matcher(emailTextView.getText().toString()).matches())
+                                    Toast.makeText(MEditProfile.this, "Please enter valid email address", Toast.LENGTH_SHORT).show();
 
-                                Toast.makeText(MEditProfile.this, "updated successfully", Toast.LENGTH_SHORT).show();
-                                imageButton1.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Customer").child(phone1);
-                                        readRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                if (snapshot.hasChildren()) {
-                                                    String cusName = (snapshot.child("name").getValue().toString());
-                                                    String cusPhone = (snapshot.child("phoneNo").getValue().toString());
-                                                    String cusEmail = (snapshot.child("email").getValue().toString());
+                                else {
+                                    cus.setName(nameTextView.getText().toString().trim());
+                                    cus.setPhoneNo(phoneTextView.getText().toString().trim());
+                                    cus.setEmail(emailTextView.getText().toString().trim());
+                                    cus.setPassword(passwordTextView.getText().toString().trim());
+                                    cus.setPhoneNo(phone.getText().toString().trim());
 
-                                                    Intent intent2 = new Intent(getBaseContext(), MProfile2.class);
-                                                    intent2.putExtra("FULL", cusName);
-                                                    intent2.putExtra("PHONE", cusPhone);
-                                                    intent2.putExtra("EMAIL", cusEmail);
-                                                    startActivity(intent2);
+                                    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Customer").child(phone1);
+                                    dbRef.setValue(cus);
+                                    clearControls();
+
+                                    Toast.makeText(MEditProfile.this, "updated successfully", Toast.LENGTH_SHORT).show();
+                                    imageButton1.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Customer").child(phone1);
+                                            readRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    if (snapshot.hasChildren()) {
+                                                        String cusName = (snapshot.child("name").getValue().toString());
+                                                        String cusPhone = (snapshot.child("phoneNo").getValue().toString());
+                                                        String cusEmail = (snapshot.child("email").getValue().toString());
+                                                        //String password = (snapshot.child("password").getValue().toString());
+
+                                                        Intent intent2 = new Intent(getBaseContext(), MProfile2.class);
+                                                        intent2.putExtra("FULL", cusName);
+                                                        intent2.putExtra("PHONE", cusPhone);
+                                                        intent2.putExtra("EMAIL", cusEmail);
+                                                        //intent2.putExtra("PASSWORD",password);
+                                                        startActivity(intent2);
+                                                    }
                                                 }
-                                            }
 
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
 
-                                            }
-                                        });
-                                    }
-                                });
+                                                }
+                                            });
+                                        }
+                                    });
 
 
+                                }
+                            } else {
+                                Toast.makeText(MEditProfile.this, "can not update1", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        else{
-                            Toast.makeText(MEditProfile.this, "can not update", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+
+
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -144,6 +154,7 @@ public class MEditProfile extends AppCompatActivity {
                     }
                 });
             }
+
         });
         //pass values
         Intent intent3 = getIntent();
@@ -167,6 +178,7 @@ public class MEditProfile extends AppCompatActivity {
         nameTextView.setText("");
         phoneTextView.setText("");
         emailTextView.setText("");
+        passwordTextView.setText("");
     }
 
 

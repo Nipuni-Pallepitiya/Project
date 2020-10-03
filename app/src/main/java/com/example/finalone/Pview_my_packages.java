@@ -1,5 +1,6 @@
 package com.example.finalone;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,6 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Pview_my_packages extends AppCompatActivity {
 
@@ -29,7 +36,7 @@ public class Pview_my_packages extends AppCompatActivity {
         String name= i1.getStringExtra("name");
         String from= i1.getStringExtra("from");
         String to= i1.getStringExtra("to");
-        String phone = i1.getStringExtra("phone");
+        final String phone = i1.getStringExtra("phone");
 
         tvName.setText(name);
         tvFrom.setText(from);
@@ -38,13 +45,14 @@ public class Pview_my_packages extends AppCompatActivity {
 
 
 
-        img.setOnClickListener(new View.OnClickListener() {
+       /* img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent( Pview_my_packages.this,MProfile.class);
                 startActivity(i);
             }
-        });
+        });*/
+
     }
 
 
