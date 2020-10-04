@@ -279,9 +279,9 @@ public class NShare_Main extends AppCompatActivity {
                     else if(TextUtils.isEmpty(txtDate.getText().toString()))
                         Toast.makeText(getApplicationContext(),"Enter date",Toast.LENGTH_SHORT).show();
                     else {
-                        if (!txtPhnTo.getText().toString().matches("[0-9]{10}"))
+                        if (!Phone(txtPhnTo.getText().toString()))
                             Toast.makeText(getApplicationContext(), "Enter correct format", Toast.LENGTH_SHORT).show();
-                        else if (!txtPhnFrom.getText().toString().matches("[0-9]{10}"))
+                        else if (!Phone(txtPhnFrom.getText().toString()))
                             Toast.makeText(getApplicationContext(), "Enter correct format", Toast.LENGTH_SHORT).show();
                         else {
                             int x = Integer.parseInt(txtAmt.getText().toString());
@@ -372,7 +372,7 @@ public class NShare_Main extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(NShare_Main.this, "Not Successfull", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NShare_Main.this, "Enter another phone number", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -382,9 +382,16 @@ public class NShare_Main extends AppCompatActivity {
             }
         });
     }
+    public boolean Phone(String s1) {
+        if (s1.matches("[0-9]{10}")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
-   
+
 
 
 

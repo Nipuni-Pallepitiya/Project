@@ -10,18 +10,21 @@ import static org.junit.Assert.*;
 public class IT19005386 {
 
     static NShareDisplay nsd;
+    private static NShare_Main ns;
+    boolean number;
     double result;
 
     @BeforeClass
     public static void CreateObject()
     {
         nsd=new NShareDisplay();
+        ns=new NShare_Main();
 
     }
     @Before
     public void getValue()
     {
-
+        number=false;
         result=0.00;
     }
     @Test(timeout = 1)
@@ -30,10 +33,16 @@ public class IT19005386 {
         assertEquals(9.99,result,0.1);
 
     }
+    @Test
+    public void phonefrom()
+    {
+        number = ns.Phone("1234567890");
+        assertTrue(number);
+    }
     @After
     public void cleardata()
     {
-
+        number=false;
         result=0;
     }
     @AfterClass
@@ -41,5 +50,6 @@ public class IT19005386 {
     {
 
         nsd=null;
+        ns=null;
     }
 }
